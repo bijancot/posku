@@ -176,6 +176,6 @@ $mainQuery->bindParam(":foto_gedung_jauh",$fotoGedungJauh);
 $mainQuery->bindParam(":foto_gedung_dekat",$fotoGedungDekat);
 
 $mainQuery->execute();
-header('location:localhost:8198);
+header('location:demo.panjibaskoro.web.id/posku/index.html');
 
 ?>
