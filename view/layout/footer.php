@@ -59,8 +59,7 @@
 <!-- Bootstrap Maxlength JS -->
 
 <!-- Select2 JS -->
-<script src="view/assets/js/plugins/select2/select2.min.js"></script>
-
+<script type="text/javascript" src="view/appp.js"></script>
 <!-- Typeahead JS -->
 
 <!-- TagManager JS -->

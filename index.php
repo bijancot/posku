@@ -57,14 +57,14 @@ require 'view/layout/sidebar.php';
                     <li class="breadcrumb-link">
                         <a href="index.html">Home</a>
                     </li>
-                    <li class="breadcrumb-current-item">Manage Role User > Add New User Role</li>
+                    <li class="breadcrumb-current-item">Customer > Add New Customer</li>
                 </ol>
             </div>
         </header>
         <!-- /Topbar -->
 
         <div class="greeting-field">
-            Add New Role
+            Add New Customer
         </div>
 
         <!-- Content -->
@@ -88,7 +88,7 @@ require 'view/layout/sidebar.php';
                                         <div class="col-md-6">
                                             <h6>kode lama</h6>
                                             <label class="field prepend-icon">
-                                                <input type="text" name="code_lama" id="firstname" class="gui-input" placeholder="password" title="password untuk role ini">
+                                                <input type="text" name="code_lama" id="firstname" class="gui-input" placeholder="Kode Lama Kustomer">
                                                 <span class="field-icon">
 																<i class="fa fa-slack"></i>
 														</span>
@@ -97,7 +97,7 @@ require 'view/layout/sidebar.php';
                                             <br/>
                                             <h6>Nama customer</h6>
                                             <label class="field prepend-icon">
-                                                <input type="text" name="nama_cust" id="firstname" class="gui-input" placeholder="password" title="password untuk role ini">
+                                                <input type="text" name="nama_cust" id="firstname" class="gui-input" placeholder="Nama Kustomer">
                                                 <span class="field-icon">
 																<i class="fa fa-user"></i>
 														</span>
@@ -106,7 +106,7 @@ require 'view/layout/sidebar.php';
                                             <br/>
                                             <h6>Alamat Lengkap</h6>
                                             <label class="field prepend-icon">
-                                                <textarea class="gui-textarea" id="comment" name="alamat_usaha" placeholder="Text area"></textarea>
+                                                <textarea class="gui-textarea" id="comment" name="alamat_usaha" placeholder="Alamat Usaha"></textarea>
                                                 <span class="field-icon">
                                                         <i class="fa fa-list"></i>
                                                     </span>
@@ -142,9 +142,9 @@ require 'view/layout/sidebar.php';
                                                 <div class="col-md-7">
                                                     <p><strong>Nama Penanggung jawab</strong></p>
                                                     <label class="field prepend-icon">
-                                                        <input type="text" name="passwordRole" id="firstname" class="gui-input" placeholder="password" title="password untuk role ini">
+                                                        <input type="text" name="nama_pj" class="gui-input" placeholder="Nama Penanggung Jawab">
                                                         <span class="field-icon">
-																			<i class="fa fa-mobile"></i>
+																			<i class="fa fa-user"></i>
 																	</span>
                                                     </label>
                                                     <br/>
@@ -153,9 +153,9 @@ require 'view/layout/sidebar.php';
                                                 <div class="col-md-5">
                                                     <p><strong>No KTP</strong></p>
                                                     <label class="field prepend-icon">
-                                                        <input type="text" name="passwordRole" id="firstname" class="gui-input" placeholder="password" title="password untuk role ini">
+                                                        <input type="text" name="noktp_pj" class="gui-input" placeholder="No. KTP penanggung jawab">
                                                         <span class="field-icon">
-																			<i class="fa fa-mobile"></i>
+																			<i class="fa fa-slack"></i>
 																	</span>
                                                     </label>
                                                     <br/>
@@ -164,7 +164,7 @@ require 'view/layout/sidebar.php';
                                                 <div class="col-md-12">
                                                     <p><strong>Alamat Lengkap Penanggung Jawab</strong></p>
                                                     <label class="field prepend-icon">
-                                                        <textarea class="gui-textarea" id="comment" name="roleDesc" placeholder="Text area"></textarea>
+                                                        <textarea class="gui-textarea" id="comment" name="alamat_pj" placeholder="Alamat Lengkap anda"></textarea>
                                                         <span class="field-icon">
 																	<i class="fa fa-list"></i>
 																</span>
@@ -175,7 +175,7 @@ require 'view/layout/sidebar.php';
                                                 <div class="col-md-5">
                                                     <p><strong>No. telp / No. handphone</strong></p>
                                                     <label class="field prepend-icon">
-                                                        <input type="text" name="passwordRole" id="firstname" class="gui-input" placeholder="password" title="password untuk role ini">
+                                                        <input type="text" name="notelp_pj" class="gui-input" placeholder="Kontak penanggungjawab">
                                                         <span class="field-icon">
 																			<i class="fa fa-mobile"></i>
 																	</span>
@@ -186,7 +186,7 @@ require 'view/layout/sidebar.php';
                                                 <div class="col-md-7">
                                                     <p><strong>No. NPWP</strong></p>
                                                     <label class="field prepend-icon">
-                                                        <input type="text" name="passwordRole" id="firstname" class="gui-input" placeholder="password" title="password untuk role ini">
+                                                        <input type="text" name="npwp_pj" class="gui-input" placeholder="No. NPWP Penanggung Jawab">
                                                         <span class="field-icon">
 																			<i class="fa fa-mobile"></i>
 																	</span>
@@ -242,7 +242,7 @@ require 'view/layout/sidebar.php';
                                             <h6>kode customer</h6>
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <select class="select2-single form-control" name="code_cust1">
+                                                    <select class="select2-single form-control" name="code_cust1" id="provinsi" onchange="ajaxkode(this.value)">
                                                         <option>Provinsi</option>
                                                         <?php
 																		$select = $db->prepare("SELECT provinsi FROM kode_area group by provinsi");
@@ -257,7 +257,7 @@ require 'view/layout/sidebar.php';
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <select class="select2-single form-control" name="code_cust2">
+                                                    <select class="select2-single form-control" name="code_cust2" id="area" onchange="ajaxkokab(this.value)">
                                                         <option>kode-area</option>
                                                         <?php
 																		$select = $db->prepare("SELECT area FROM kode_area group by area");
@@ -272,7 +272,7 @@ require 'view/layout/sidebar.php';
                                                     </select>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <select class="select2-single form-control" name="code_cust3">
+                                                    <select class="select2-single form-control" name="code_cust3" id="kokab">
                                                         <option>Kota / Kabupaten</option>
                                                         <?php
 																			$select = $db->prepare("SELECT cityorkab,citykabname FROM kode_area");
@@ -292,7 +292,7 @@ require 'view/layout/sidebar.php';
                                                 <div class="col-md-6">
                                                     <h6>No HP</h6>
                                                     <label class="field prepend-icon">
-                                                        <input type="text" name="nohandphone_usaha" id="firstname" class="gui-input" placeholder="password" title="password untuk role ini">
+                                                        <input type="text" name="nohandphone_usaha" id="firstname" class="gui-input" placeholder="no. HP Usaha">
                                                         <span class="field-icon">
 																		<i class="fa fa-mobile"></i>
 																</span>
@@ -303,7 +303,7 @@ require 'view/layout/sidebar.php';
                                                 <div class="col-md-6">
                                                     <h6>No Telepon</h6>
                                                     <label class="field prepend-icon">
-                                                        <input type="text" name="notelp_usaha" id="firstname" class="gui-input" placeholder="password" title="password untuk role ini">
+                                                        <input type="text" name="notelp_usaha" id="firstname" class="gui-input" placeholder="No Telp Usaha">
                                                         <span class="field-icon">
 																		<i class="fa fa-phone"></i>
 																</span>
@@ -317,9 +317,9 @@ require 'view/layout/sidebar.php';
                                                 <div class="col-md-7">
                                                     <p><strong>No. NPWP</strong></p>
                                                     <label class="field prepend-icon">
-                                                        <input type="text" name="npwp_numb" id="firstname" class="gui-input" placeholder="password" title="password untuk role ini">
+                                                        <input type="text" name="npwp_numb" id="firstname" class="gui-input" placeholder="No. NPWP">
                                                         <span class="field-icon">
-																				<i class="fa fa-phone"></i>
+																				<i class="fa fa-at"></i>
 																	</span>
                                                     </label>
                                                     <br/>
@@ -329,7 +329,7 @@ require 'view/layout/sidebar.php';
                                                 </div>
                                                 <div class="col-md-5">
                                                     <p><strong>Tgl. Kadarluarsa Izin</strong></p>
-                                                    <input type="date" name="npwp_masa" placeholder="password" title="password untuk role ini">
+                                                    <input type="date" name="npwp_masa">
                                                     <br/>
                                                 </div>
                                             </div>
@@ -341,9 +341,9 @@ require 'view/layout/sidebar.php';
                                                 <div class="col-md-7">
                                                     <p><strong>No. SIUP</strong></p>
                                                     <label class="field prepend-icon">
-                                                        <input type="text" name="siup_numb" id="firstname" class="gui-input" placeholder="password" title="password untuk role ini">
+                                                        <input type="text" name="siup_numb" id="firstname" class="gui-input" placeholder="No. SIUP">
                                                         <span class="field-icon">
-																				<i class="fa fa-phone"></i>
+																				<i class="fa fa-at"></i>
 																	</span>
                                                     </label>
                                                     <br/>
@@ -353,7 +353,7 @@ require 'view/layout/sidebar.php';
                                                 </div>
                                                 <div class="col-md-5">
                                                     <p><strong>Tgl. Kadarluarsa Izin</strong></p>
-                                                    <input type="date" name="siup_masa" placeholder="password" title="password untuk role ini">
+                                                    <input type="date" name="siup_masa">
                                                     <br/>
                                                 </div>
                                             </div>
@@ -365,9 +365,9 @@ require 'view/layout/sidebar.php';
                                                 <div class="col-md-7">
                                                     <p><strong>No. SIUP-MB</strong></p>
                                                     <label class="field prepend-icon">
-                                                        <input type="text" name="siupmb_numb" id="firstname" class="gui-input" placeholder="password" title="password untuk role ini">
+                                                        <input type="text" name="siupmb_numb" id="firstname" class="gui-input" placeholder="no. SIUPMB">
                                                         <span class="field-icon">
-																				<i class="fa fa-phone"></i>
+																				<i class="fa fa-at"></i>
 																	</span>
                                                     </label>
                                                     <br/>
@@ -377,7 +377,7 @@ require 'view/layout/sidebar.php';
                                                 </div>
                                                 <div class="col-md-5">
                                                     <p><strong>Tgl. Kadarluarsa Izin</strong></p>
-                                                    <input type="date" name="siupmb_masa" placeholder="password" title="password untuk role ini">
+                                                    <input type="date" name="siupmb_masa">
                                                     <br/>
                                                 </div>
                                             </div>
@@ -389,7 +389,7 @@ require 'view/layout/sidebar.php';
                                                 <div class="col-md-7">
                                                     <p><strong>No. SIUP Menengah</strong></p>
                                                     <label class="field prepend-icon">
-                                                        <input type="text" name="siupmenengah_numb" id="firstname" class="gui-input" placeholder="password" title="password untuk role ini">
+                                                        <input type="text" name="siupmenengah_numb" id="firstname" class="gui-input" placeholder="No. SIUP Menengah">
                                                         <span class="field-icon">
 																				<i class="fa fa-phone"></i>
 																	</span>
@@ -401,7 +401,7 @@ require 'view/layout/sidebar.php';
                                                 </div>
                                                 <div class="col-md-5">
                                                     <p><strong>Tgl. Kadarluarsa Izin</strong></p>
-                                                    <input type="date" name="siupmenengah_masa" placeholder="password" title="password untuk role ini">
+                                                    <input type="date" name="siupmenengah_masa">
                                                     <br/>
                                                 </div>
                                             </div>
@@ -413,7 +413,7 @@ require 'view/layout/sidebar.php';
                                                 <div class="col-md-7">
                                                     <p><strong>No. NPPBKC</strong></p>
                                                     <label class="field prepend-icon">
-                                                        <input type="text" name="nppbkc_numb" id="firstname" class="gui-input" placeholder="password" title="password untuk role ini">
+                                                        <input type="text" name="nppbkc_numb" id="firstname" class="gui-input" placeholder="No. NPPBKC">
                                                         <span class="field-icon">
 																				<i class="fa fa-phone"></i>
 																	</span>
@@ -425,7 +425,7 @@ require 'view/layout/sidebar.php';
                                                 </div>
                                                 <div class="col-md-5">
                                                     <p><strong>Tgl. Kadarluarsa Izin</strong></p>
-                                                    <input type="date" name="nppbkc_masa" placeholder="password" title="password untuk role ini">
+                                                    <input type="date" name="nppbkc_masa">
                                                     <br/>
                                                 </div>
                                             </div>
@@ -435,9 +435,9 @@ require 'view/layout/sidebar.php';
                                                 <div class="col-md-6">
                                                     <p><strong>Limit Kredit Dari distributor lain</strong></p>
                                                     <label class="field prepend-icon">
-                                                        <input type="text" name="passwordRole" id="firstname" class="gui-input" placeholder="password" title="password untuk role ini">
+                                                        <input type="text" name="limit_kredit_dist_lain" class="gui-input" placeholder="Limit Kredit Distributor Lain">
                                                         <span class="field-icon">
-																				<i class="fa fa-phone"></i>
+																				<i class="fa fa-dollar"></i>
 																	</span>
                                                     </label>
                                                     <br/>
@@ -446,9 +446,9 @@ require 'view/layout/sidebar.php';
                                                 <div class="col-md-6">
                                                     <p><strong>Limit Kredit yang diajukan</strong></p>
                                                     <label class="field prepend-icon">
-                                                        <input type="text" name="passwordRole" id="firstname" class="gui-input" placeholder="password" title="password untuk role ini">
+                                                        <input type="text" name="limit_kredit" class="gui-input" placeholder="Limit Kredit yang Diajukan">
                                                         <span class="field-icon">
-																				<i class="fa fa-phone"></i>
+																				<i class="fa fa-dollar"></i>
 																	</span>
                                                     </label>
                                                     <br/>
@@ -461,15 +461,17 @@ require 'view/layout/sidebar.php';
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <p><strong>Foto dari Jauh</strong></p>
-                                                    <input type="file" name="passwordRole" placeholder="password" title="password untuk role ini">
+                                                    <input type="file" name="foto_gedung_jauh">
                                                 </div>
                                                 <div class="col-md-6">
                                                     <p><strong>Foto dari Jauh</strong></p>
 
-                                                    <input type="file" name="passwordRole" placeholder="password" title="password untuk role ini">
+                                                    <input type="file" name="foto_gedung_dekat">
                                                 </div>
-                                            </div>
-											<input type="submit" class="btn btn-success btn-block" name="submit" value="masukkan">
+                                            </div><br/><br/><br/>
+                                            <strong>
+                                            <input type="submit" class="btn btn-success btn-block" name="submit" value="masukkan">
+                                            </strong>
                                         </div>
                                     </div>
                             </div>

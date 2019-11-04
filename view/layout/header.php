@@ -28,7 +28,7 @@
 
     <!-- Octicons CSS -->
     
-    <link rel="stylesheet" type="text/css" href="assets/js/utility/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" type="text/css" href="view/assets/js/utility/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.min.css">
 
     <!-- Stateface CSS -->
     
