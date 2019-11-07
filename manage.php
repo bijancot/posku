@@ -81,7 +81,7 @@ require 'view/layout/sidebar.php';
                     <div class="col-md-12">
                         <div class="panel panel-visible">
                             <div class="panel-heading">
-                            <a href=<?php echo $base_url."index.php";?>>
+                            <a href=<?php echo "../index.php";?>>
                                     <button type="button" class="btn btn-rounded btn-primary btn-block right" style="width: 200px;">+ Customer Baru</button>
                                     </a>
                             </div>
