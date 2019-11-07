@@ -18,6 +18,5 @@
 	catch(PDOException $STH){
 	  echo "<br>".$STH->getMessage();
 	}
-$base_url = "http://localhost:8983/";
 ini_set('display_errors',0); 
 ?>
