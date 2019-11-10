@@ -18,9 +18,7 @@
 	catch(PDOException $STH){
 	  echo "<br>".$STH->getMessage();
 	}
-<<<<<<< HEAD
-=======
+
 $base_url = "http://demo.panjibaskoro.web.id/posku/";
->>>>>>> 04357639df83f3e81cbf5bd61efabeaf3bd94eef
 ini_set('display_errors',0); 
 ?>
