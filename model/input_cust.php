@@ -2,7 +2,30 @@
 require "../conn/koneksi.php";
 
  $code_lama = $_POST['code_lama'];
- $code_cust = $_POST['code_cust1']."/".$_POST['code_cust2']."/".$_POST['code_cust3'];
+ $code_cust3 = $_POST['code_cust3'];
+
+ $kolo = explode(" ",$code_cust3);
+
+ $kokab = $kolo[0];
+ $nakokab = $kolo[1];
+
+ $querykokab = $db->prepare("SELECT * FROM kode_area where cityorkab=:cityorkab and citykabname=:citykabname");
+    $querykokab->bindParam(":cityorkab",$kokab);
+    $querykokab->bindParam(":citykabname",$nakokab);
+    $querykokab->execute();
+    $hasol = $querykokab->fetchAll();
+
+    foreach ($hasol as $key) {
+        if(strpos($key['area'],'JTG')===0||strpos($key['area'],'JTM')===0||strpos($key['area'],'LPT')===0){
+            
+            $code_cust="A111920123TIMUR";
+
+        }if(strpos($key['area'],'DKI')===0||strpos($key['area'],'JBR')===0||strpos($key['area'],'LPB')===0){
+            $code_cust="A111920453BARAT";
+        }
+    }
+
+ $code_cust;
  $nama_cust = $_POST['nama_cust'];
  $alamat_usaha = $_POST['alamat_usaha'];
  $notelp_usaha = $_POST['notelp_usaha'];
@@ -176,6 +199,6 @@ $mainQuery->bindParam(":foto_gedung_jauh",$fotoGedungJauh);
 $mainQuery->bindParam(":foto_gedung_dekat",$fotoGedungDekat);
 
 $mainQuery->execute();
-header('location:demo.panjibaskoro.web.id/posku/index.html');
+header('location:../manage.php');
 
 ?>
