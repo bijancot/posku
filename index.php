@@ -57,15 +57,38 @@
             </li>
             <li class="breadcrumb-current-item">Customer > Add New Customer</li>
          </ol>
+         
       </div>
+<!--       
+   <div class="topbar-left greeting-field">
+      Add New Customer
+   </div> -->
    </header>
    <!-- /Topbar -->
-   <div class="greeting-field">
-      Add New Customer
-   </div>
    <!-- Content -->
    <section id="content" class="table-layout animated fadeIn">
       <!-- Column Center -->
+      <aside class="chute chute-left chute290 chute-icon-style bg-info" data-chute-height="match">
+                <div class="chute-icon"></div>
+                <div class="chute-container">
+                    <div id="nav-spy">
+                        <ul class="nav chute-nav" data-smoothscroll="-70" data-spy="affix" data-offset-top="200">
+                            <li class="active">
+                                <a href="#first">
+                                    Data pokok customer</a>
+                            </li>
+                            <li>
+                                <a href="#second">
+                                    Perizinan Customer</a>
+                            </li>
+                            <li>
+                                <a href="#third">
+                                    Penanggung Jawab Usaha</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
       <div class="chute chute-center">
          <!-- AllCP Info -->
          <div class="row">
@@ -79,12 +102,15 @@
                         <!-- Basic -->
                         <div class="row">
                             <div class="col-md-12">
-                                <h5>Data Customer</h5>
+                                
                             </div>
                         </div>
+                        <!-- first -->
+                        <div id="first">
+                        <h4>Data Customer</h4>
                         <div class="row">
                            <div class="col-md-6">
-                              <h6>kode lama</h6>
+                           <p><strong>Kode Lama</strong></p>
                               <label class="field prepend-icon">
                               <input type="text" name="code_lama" id="firstname" class="gui-input" placeholder="Kode Lama Kustomer">
                               <span class="field-icon">
@@ -93,97 +119,57 @@
                               </label>
                               <br/>
                               <br/>
-                              <h6>Nama customer</h6>
-                              <label class="field prepend-icon">
-                              <input type="text" name="nama_cust" id="firstname" class="gui-input" placeholder="Nama Kustomer">
-                              <span class="field-icon">
-                              <i class="fa fa-user"></i>
-                              </span>
-                              </label>
-                              <br/>
-                              <br/>
-                              <h6>Alamat Lengkap</h6>
-                              <label class="field prepend-icon">
-                              <textarea class="gui-textarea" id="comment" name="alamat_usaha" placeholder="Alamat Usaha"></textarea>
-                              <span class="field-icon">
-                              <i class="fa fa-list"></i>
-                              </span>
-                              </label>
-                              <br/>
-                              <br/>
-                              <br/>
-                              <?php
-                                 // $lim = 5;
-                                 
-                                 // for($i=0;$i<$lim;$i++){
-                                 // 	echo "<div class=\"row\">
-                                                                  //     <div class=\"col-md-8\">
-                                                                  //         <p><strong>Nama Produk</strong></p>
-                                                                  //         <label class=\"field prepend-icon\">
-                                                                  //             <input type=\"text\" name=\"nama_produk[]\" id=\"firstname\" class=\"gui-input\" placeholder=\"Nama Produk\">
-                                                                  //             <span class=\"field-icon\">
-                                 // 									<i class=\"fa fa-mobile\"></i>
-                                 // 							</span>
-                                                                  //         </label>
-                                                                  //     </div>
-                                                                  //     <div class=\"col-md-4\">
-                                                                  //         <p><strong>QTY Produk</strong></p>
-                                                                  //         <label class=\"field prepend-icon\">
-                                                                  //             <input type=\"text\" name=\"qty[]\" class=\"gui-input\" placeholder=\"QTY\" title=\"jumlah barang\">
-                                                                  //             <span class=\"field-icon\">
-                                 // 									<i class=\"fa fa-slack\"></i>
-                                 // 							</span>
-                                                                  //         </label>
-                                                                  //         <br/>
-                                                                  //         <br/>
-                                                                  //     </div>
-                                                                  //     <div class=\"col-md-6\">
-                                                                  //         <p><strong>foto Produk</strong></p>
-                                                                  //         <input type=\"file\" name=\"foto_produk[]\" >
-                                                                  //     </div>
-                                                                  //     <br/>
-                                                                  //     <br/>
-                                                                  
-                                                                  // </div>
-                                                                  // <br/>
-                                                                  // <br/>";
-                                 
-                                 // }
-                                 
-                                 ?>
                            </div>
                            <div class="col-md-6">
-                              <h6>kode customer</h6>
-                              <div class="row">
-                                 <div class="col-md-4">
+                           <p><strong>Kota CUstomer</strong></p>
                                     <label class="field select">
-                                       <select class="form-control" name="code_cust1" id="provinsi">
-                                          <option value="" selected="selected">Provinsi</option>
-                                       </select>
-                                       <i class="arrow"></i>
-                                    </label>
-                                 </div>
-                                 <div class="col-md-3">
-                                    <label class="field select">
-                                       <select class="form-control" name="code_cust2" id="area">
-                                          <option value="" selected="selected">Area</option>
-                                       </select>
-                                       <i class="arrow"></i>
-                                    </label>
-                                 </div>
-                                 <div class="col-xs-5">
-                                    <label class="field select">
-                                       <select class="form-control" name="code_cust3" id="kokab">
+                                       <select class="form-control select2-single" name="code_cust3" id="kokab">
                                           <option value="" selected="selected">Kota/Kab</option>
+                                          <?php
+                                                $select = $db->prepare("SELECT cityorkab, citykabname FROM kode_area");
+                                                $select->execute();
+                                                $tampil = $select->fetchAll();
+                                                     foreach($tampil as $value){
+                                          ?>
+                                             <option value="<?php echo $value['cityorkab']." ". $value['citykabname']?>"><?php echo $value['cityorkab']." ". $value['citykabname']?></option>
+                                          <?php }?>
                                        </select>
-                                       <i class="arrow"></i>
                                     </label>
-                                 </div>
                               </div>
-                              <br/>
+                              <div class="row">
+                                    <div class="col-md-12">
+                                    <p><strong>Nama Customer</strong></p>
+                                       <label class="field prepend-icon">
+                                          <input type="text" name="nama_cust" id="firstname" class="gui-input" placeholder="Nama Kustomer">
+                                          <span class="field-icon">
+                                          <i class="fa fa-user"></i>
+                                          </span>
+                                       </label>
+                                    <br/>
+                                    <br/>
+                                    <p><strong>Alamat lengkap customer</strong></p>
+                                       <label class="field prepend-icon">
+                                       <textarea class="gui-textarea" id="comment" name="alamat_usaha" placeholder="Alamat Usaha"></textarea>
+                                       <span class="field-icon">
+                                       <i class="fa fa-list"></i>
+                                       </span>
+                                       </label>
+                                    <br/>
+                                    <br/>
+                                    </div>
+                              </div>
                               <div class="row">
                                  <div class="col-md-6">
-                                    <h6>No HP</h6>
+                                    <p><strong>No. Telp</strong></p>
+                                    <label class="field prepend-icon">
+                                    <input type="text" name="notelp_usaha" id="firstname" class="gui-input" placeholder="No Telp Usaha">
+                                    <span class="field-icon">
+                                    <i class="fa fa-phone"></i>
+                                    </span>
+                                    </label>
+                                    <br/>
+                                    <br/>
+                                    <p><strong>No. Hp</strong></p>
                                     <label class="field prepend-icon">
                                     <input type="text" name="nohandphone_usaha" id="firstname" class="gui-input" placeholder="no. HP Usaha">
                                     <span class="field-icon">
@@ -194,20 +180,7 @@
                                     <br/>
                                  </div>
                                  <div class="col-md-6">
-                                    <h6>No Telepon</h6>
-                                    <label class="field prepend-icon">
-                                    <input type="text" name="notelp_usaha" id="firstname" class="gui-input" placeholder="No Telp Usaha">
-                                    <span class="field-icon">
-                                    <i class="fa fa-phone"></i>
-                                    </span>
-                                    </label>
-                                    <br/>
-                                    <br/>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-6">
-                                    <h6>Jenis Bangunan</h6>
+                                 <p><strong>Jenis Bangunan</strong></p>
                                     <select class="select2-single form-control" name="jenis_bangunan">
                                        <option>Jenis Bangunan</option>
                                        <option value="Gerobak">Gerobak</option>
@@ -216,9 +189,8 @@
                                        <option value="Toko">Toko</option>
                                        <option value="Gudang">Gudang</option>
                                     </select>
-                                 </div>
-                                 <div class="col-md-6">
-                                    <h6>Status Ijin Usaha</h6>
+                                    <br/><br/>
+                                    <p><strong>Status Ijin usaha</strong></p>
                                     <select class="select2-single form-control" name="status_ijin_usaha">
                                        <option>Status Ijin Usaha</option>
                                        <option value="Sub-Distributor">Sub-Distributor</option>
@@ -228,20 +200,15 @@
                                  </div>
                               </div>
                            </div>
-                           <div class="row">
-                              <div class="col-md-12">
-                              </div>
-                           </div>
-                           <div class="row">
-                            <div class="col-md-12">
-                                <h5>Dokumen Usaha</h5>
-                            </div>
                         </div>
+                        <!-- first -->
+                        <!-- second -->
+                        <br/><br/><br/>
+                        <div id="second">
+                           <h4>Dokumen Perizinan Usaha</h4>
                            <div class="row">
-                              <div class="col-md-6">
-                                 <h6>Data NPWP :</h6>
-                                 <div class="row">
-                                    <div class="col-md-7">
+                              <h6>Data NPWP : </h6><br/>
+                              <div class="col-md-8">
                                        <p><strong>No. NPWP</strong></p>
                                        <label class="field prepend-icon">
                                        <input type="text" name="npwp_numb" id="firstname" class="gui-input" placeholder="No. NPWP">
@@ -254,17 +221,15 @@
                                        <p><strong>File foto NPWP</strong></p>
                                        <input type="file" name="npwp_foto"/>
                                     </div>
-                                    <div class="col-md-5">
-                                       <p><strong>Tgl. Kadarluarsa Izin</strong></p>
+                                    <div class="col-md-4">
+                                       <p><strong>Tgl. Kadarluarsa NPWP</strong></p>
                                        <input type="date" name="npwp_masa">
                                        <br/>
                                     </div>
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <h6>Data SIUP :</h6>
-                                 <div class="row">
-                                    <div class="col-md-7">
+                           </div>
+                           <div class="row">
+                              <br/><br/><h6>Data SIUP : </h6><br/>
+                                    <div class="col-md-8">
                                        <p><strong>No. SIUP</strong></p>
                                        <label class="field prepend-icon">
                                        <input type="text" name="siup_numb" id="firstname" class="gui-input" placeholder="No. SIUP">
@@ -277,18 +242,15 @@
                                        <p><strong>File foto SIUP</strong></p>
                                        <input type="file" name="siup_foto"/>
                                     </div>
-                                    <div class="col-md-5">
-                                       <p><strong>Tgl. Kadarluarsa Izin</strong></p>
+                                    <div class="col-md-4">
+                                       <p><strong>Tgl. Kadarluarsa SIUP</strong></p>
                                        <input type="date" name="siup_masa">
                                        <br/>
                                     </div>
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <br/>
-                                 <h6>Data SIUP-MB :</h6>
-                                 <div class="row">
-                                    <div class="col-md-7">
+                           </div>
+                           <div class="row">
+                           <br/><br/><h6>Data SIUP-MB :</h6><br/>
+                           <div class="col-md-8">
                                        <p><strong>No. SIUP-MB</strong></p>
                                        <label class="field prepend-icon">
                                        <input type="text" name="siupmb_numb" id="firstname" class="gui-input" placeholder="no. SIUPMB">
@@ -301,18 +263,15 @@
                                        <p><strong>File foto SIUP-MB</strong></p>
                                        <input type="file" name="siupmb_foto"/>
                                     </div>
-                                    <div class="col-md-5">
-                                       <p><strong>Tgl. Kadarluarsa Izin</strong></p>
+                                    <div class="col-md-4">
+                                       <p><strong>Tgl. Kadarluarsa SIUP-MB</strong></p>
                                        <input type="date" name="siupmb_masa">
                                        <br/>
                                     </div>
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <br/>
-                                 <h6>Data SIUP Menengah :</h6>
-                                 <div class="row">
-                                    <div class="col-md-7">
+                           </div>
+                           <div class="row">
+                           <br/><br/><h6>Data SIUP Menengah :</h6><br/>
+                           <div class="col-md-8">
                                        <p><strong>No. SIUP Menengah</strong></p>
                                        <label class="field prepend-icon">
                                        <input type="text" name="siupmenengah_numb" id="firstname" class="gui-input" placeholder="No. SIUP Menengah">
@@ -325,18 +284,15 @@
                                        <p><strong>File foto SIUP Menengah</strong></p>
                                        <input type="file" name="siupmenengah_foto"/>
                                     </div>
-                                    <div class="col-md-5">
-                                       <p><strong>Tgl. Kadarluarsa Izin</strong></p>
+                                    <div class="col-md-4">
+                                       <p><strong>Tgl. Kadarluarsa SIUP-Menengah</strong></p>
                                        <input type="date" name="siupmenengah_masa">
                                        <br/>
                                     </div>
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <br/>
-                                 <h6>Data NPPBKC :</h6>
-                                 <div class="row">
-                                    <div class="col-md-7">
+                           </div>
+                           <div class="row">
+                           <br/><br/><h6>Data NPPBKC :</h6><br/>
+                           <div class="col-md-8">
                                        <p><strong>No. NPPBKC</strong></p>
                                        <label class="field prepend-icon">
                                        <input type="text" name="nppbkc_numb" id="firstname" class="gui-input" placeholder="No. NPPBKC">
@@ -349,23 +305,20 @@
                                        <p><strong>File foto NPPBKC</strong></p>
                                        <input type="file" name="nppbkc_foto"/>
                                     </div>
-                                    <div class="col-md-5">
-                                       <p><strong>Tgl. Kadarluarsa Izin</strong></p>
+                                    <div class="col-md-4">
+                                       <p><strong>Tgl. Kadarluarsa NPPBKC</strong></p>
                                        <input type="date" name="nppbkc_masa">
                                        <br/>
                                     </div>
-                                 </div>
-                              </div>
                            </div>
-                           <div class="row">
-                               <br/><br/><br/>
-                            <div class="col-md-12">
-                                <h5>Data Penanggung Jawab</h5>
-                            </div><br/><br/>
                         </div>
+                        <!-- second -->
+                        <!-- third -->
+                        <br/><br/><br/><br/>
+                        <div id="third">
+                           <h4>Data Penanggung Jawab Usaha</h4>
+                           <br/>
                            <div class="row">
-                              <div class="col-md-6">
-                                 <div class="row">
                                     <div class="col-md-7">
                                        <p><strong>Nama Penanggung jawab</strong></p>
                                        <label class="field prepend-icon">
@@ -388,18 +341,9 @@
                                        <br/>
                                        <br/>
                                     </div>
-                                    <div class="col-md-12">
-                                       <p><strong>Alamat Lengkap Penanggung Jawab</strong></p>
-                                       <label class="field prepend-icon">
-                                       <textarea class="gui-textarea" id="comment" name="alamat_pj" placeholder="Alamat Lengkap anda"></textarea>
-                                       <span class="field-icon">
-                                       <i class="fa fa-list"></i>
-                                       </span>
-                                       </label>
-                                       <br/>
-                                       <br/>
-                                    </div>
-                                    <div class="col-md-5">
+                        </div>
+                        <div class="row">
+                        <div class="col-md-5">
                                        <p><strong>No. telp / No. handphone</strong></p>
                                        <label class="field prepend-icon">
                                        <input type="text" name="notelp_pj" class="gui-input" placeholder="Kontak penanggungjawab">
@@ -422,12 +366,18 @@
                                        <br/>
                                        <br/>
                                     </div>
-                                    <br/>
-                                    <!-- <h6>Barang Yang dijual Saat ini :</h6> -->
-                                 </div>
-                              </div>
-                              <div class="col-md-6">
-                                 <div class="row">
+                                    <div class="col-md-12">
+                                    <p><strong>Alamat Lengkap Penanggung Jawab</strong></p>
+                                       <label class="field prepend-icon">
+                                       <textarea class="gui-textarea" id="comment" name="alamat_pj" placeholder="Alamat Lengkap anda"></textarea>
+                                       <span class="field-icon">
+                                       <i class="fa fa-list"></i>
+                                       </span>
+                                       </label>
+                                       <br/>
+                                       <br/>
+                                    </div>
+                                    <div class="row">
                                     <div class="col-md-6">
                                        <p><strong>Limit Kredit Dari distributor lain</strong></p>
                                        <label class="field prepend-icon">
@@ -440,6 +390,13 @@
                                        <br/>
                                     </div>
                                     <div class="col-md-6">
+                                       <h6>Foto gedung : </h6>
+                                       <p><strong>Foto dari Jauh</strong></p>
+                                       <input type="file" name="foto_gedung_jauh">
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                 <div class="col-md-6">
                                        <p><strong>Limit Kredit yang diajukan</strong></p>
                                        <label class="field prepend-icon">
                                        <input type="text" name="limit_kredit" class="gui-input" placeholder="Limit Kredit yang Diajukan">
@@ -450,31 +407,18 @@
                                        <br/>
                                        <br/>
                                     </div>
-                                 </div>
-                                 <br/>
-                                 <br/>
-                                 <h6>Upload Foto Gedung</h6>
-                                 <div class="row">
                                     <div class="col-md-6">
-                                       <p><strong>Foto dari Jauh</strong></p>
-                                       <input type="file" name="foto_gedung_jauh">
-                                    </div>
-                                    <div class="col-md-6">
-                                       <p><strong>Foto dari Jauh</strong></p>
+                                       <br/>
+                                       <p><strong>Foto dari Dekat</strong></p>
                                        <input type="file" name="foto_gedung_dekat">
-                                    </div>
+                                    </div><br/><br/><br/><br/><br/><br/><br/><br/>
+                                    <button type="submit" class="btn btn-block btn-success" name="submit"><strong>Simpan Data</strong></button>
                                  </div>
-                                 <br/><br/><br/><br/><br/><br/><br/>    
-                                 <button type="submit" class="btn btn-block btn-success" name="submit"><strong>Simpan Data</strong></button>
-                              </div>
-                           </div>
                         </div>
-                  </div>
+                     </form>
                </div>
-               </form>
             </div>
          </div>
-      </div>
       <!-- /AllCP Grid -->
       </div>
       </div>
