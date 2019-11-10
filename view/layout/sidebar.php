@@ -55,6 +55,26 @@
                         </li>
                     </ul>
                 </li>
+                <!--------------JOB--------------->
+                <li>
+                    <a class="menu-open" href="#">
+                        <span class="caret"></span>
+                        <span class="sidebar-title">Supplier</span>
+                        <span class="sb-menu-icon fa fa-home"></span>
+                    </a>
+                    <ul class="nav sub-nav">
+                        <li class="active">
+                            <a href="managesup.php">
+                                Manage Supplier 
+                            </a>
+                        </li>
+                         <li class="active">
+                            <a href="supplier.php">
+                                Tambah Supplier
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
         </div>
         <!-- /Sidebar Left Wrapper  -->
