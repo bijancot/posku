@@ -1,5 +1,5 @@
 <?php
-   // require "conn/koneksi.php";
+   require "conn/koneksi.php";
    require 'view/layout/header.php';
    require 'view/layout/sidebar.php';
    // require 'view/layout/main.php';
