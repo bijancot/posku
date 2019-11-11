@@ -85,6 +85,10 @@
                                 <a href="#third">
                                     Penanggung Jawab Usaha</a>
                             </li>
+                            <li>
+                                <a href="#forth">
+                                    Produk yang dijual saat ini</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -412,9 +416,53 @@
                                        <p><strong>Foto dari Dekat</strong></p>
                                        <input type="file" name="foto_gedung_dekat">
                                     </div><br/><br/><br/><br/><br/><br/><br/><br/>
-                                    <button type="submit" class="btn btn-block btn-success" name="submit"><strong>Simpan Data</strong></button>
+
                                  </div>
                         </div>
+                        <!-- third -->
+                        <!-- forth -->
+                       <div id="forth">
+                       <h4>Data Produk yang dijual saat ini</h4>
+                       <?php
+                        $lim = 5;
+                                 
+                                 for($i=0;$i<$lim;$i++){
+                                 	echo "<div class=\"row\">
+                                                                      <div class=\"col-md-8\">
+                                                                          <p><strong>Nama Produk</strong></p>
+                                                                          <label class=\"field prepend-icon\">
+                                                                              <input type=\"text\" name=\"nama_produk[]\" id=\"firstname\" class=\"gui-input\" placeholder=\"Nama Produk\">
+                                                                              <span class=\"field-icon\">
+                                 									<i class=\"fa fa-mobile\"></i>
+                                 							</span>
+                                                                          </label>
+                                                                      </div>
+                                                                      <div class=\"col-md-4\">
+                                                                          <p><strong>QTY Produk</strong></p>
+                                                                          <label class=\"field prepend-icon\">
+                                                                              <input type=\"text\" name=\"qty[]\" class=\"gui-input\" placeholder=\"QTY\" title=\"jumlah barang\">
+                                                                              <span class=\"field-icon\">
+                                 									<i class=\"fa fa-slack\"></i>
+                                 							</span>
+                                                                          </label>
+                                                                          <br/>
+                                                                          <br/>
+                                                                      </div>
+                                                                      <div class=\"col-md-6\">
+                                                                          <p><strong>foto Produk</strong></p>
+                                                                          <input type=\"file\" name=\"foto_produk[]\" >
+                                                                      </div>
+                                                                      <br/>
+                                                                      <br/>
+                                                                  
+                                                                  </div>
+                                                                  <br/>
+                                                                  <br/>";
+                                 
+                                 }
+                        ?>
+                       </div>
+                       <button type="submit" class="btn btn-block btn-success" name="submit"><strong>Simpan Data</strong></button>
                      </form>
                </div>
             </div>
