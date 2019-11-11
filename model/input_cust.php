@@ -7,8 +7,30 @@ require "../conn/koneksi.php";
  $kolo = explode(" ",$code_cust3);
 
  $kokab = $kolo[0];
- $nakokab = $kolo[1];
+ echo $nakokab = $kolo[1]." ".$kolo[2];
 
+ $queryq = $db->prepare("SELECT max(id) as def FROM master_customer where id!=':id'");
+ $id="dasda";
+ $queryq->bindParam(":id",$id);
+ $queryq->execute();
+ $hasel = $queryq->fetchAll();
+
+ foreach ($hasel as $koy) {
+     $userid = $koy['def'];
+ }
+
+ if($userid<=9){
+     $ido="000".$userid;
+ }else if($userid>9&&$userid<=99){
+     $ido="00".$userid;
+ }else if($userid>99&&$userid<=999){
+     $ido="0".$userid;
+ }else if($userid>999&&$userid<=9999){
+     $ido=$userid;
+ }
+
+
+ 
  $querykokab = $db->prepare("SELECT * FROM kode_area where cityorkab=:cityorkab and citykabname=:citykabname");
     $querykokab->bindParam(":cityorkab",$kokab);
     $querykokab->bindParam(":citykabname",$nakokab);
@@ -16,16 +38,17 @@ require "../conn/koneksi.php";
     $hasol = $querykokab->fetchAll();
 
     foreach ($hasol as $key) {
+        //echo $key['area'];
         if(strpos($key['area'],'JTG')===0||strpos($key['area'],'JTM')===0||strpos($key['area'],'LPT')===0){
-            
-            $code_cust="A111920123TIMUR";
+            // 
+            echo $code_cust="A".$key['kode_sub'].$key['kode_kokab'].$ido;
 
         }if(strpos($key['area'],'DKI')===0||strpos($key['area'],'JBR')===0||strpos($key['area'],'LPB')===0){
-            $code_cust="A111920453BARAT";
+
+            echo $code_cust="B".$key['kode_sub'].$key['kode_kokab'].$ido;
         }
     }
 
- $code_cust;
  $nama_cust = $_POST['nama_cust'];
  $alamat_usaha = $_POST['alamat_usaha'];
  $notelp_usaha = $_POST['notelp_usaha'];
