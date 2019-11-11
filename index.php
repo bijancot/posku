@@ -73,7 +73,7 @@
                 <div class="chute-container">
                     <div id="nav-spy">
                         <ul class="nav chute-nav" data-smoothscroll="-70" data-spy="affix" data-offset-top="200">
-                            <li class="active">
+                            <li>
                                 <a href="#first">
                                     Data pokok customer</a>
                             </li>
