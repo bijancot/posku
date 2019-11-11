@@ -109,11 +109,11 @@ require 'view/layout/sidebar.php';
                                             echo "<tr>
                                             <td>$key->supplier_nama</td>
                                             <td>$key->supplier_alamat</td>
-                                            <td>$key->supplier_notelp</td>
+                                            <td>(+62) $key->supplier_notelp</td>
                                             <td width=\"15%\">
                                             <table>
                                                 <tr>
-                                                    <td><a><button type=\"button\" class=\"btn btn-rounded btn-info btn-block\" title=\"Detail\"><span class=\"fa fa-eye\"></span></button></a></td>
+                                                    <td><a href=\"detail-sup.php?ids=$key->id\"><button type=\"button\" class=\"btn btn-rounded btn-info btn-block\" title=\"Detail\"><span class=\"fa fa-eye\"></span></button></a></td>
                                                 </tr>
                                             </table>
                                         </td>
