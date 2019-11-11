@@ -102,7 +102,7 @@ require 'view/layout/sidebar.php';
                                         <tbody>
                                         <?php
                                             $kolo = "adasdsa";
-                                            $ko = $db->prepare("select code_lama,code_cust,nama_cust,alamat_usaha,notelp_usaha from master_customer where id!=:idrole");
+                                            $ko = $db->prepare("select id,code_lama,code_cust,nama_cust,alamat_usaha,notelp_usaha from master_customer where id!=:idrole");
                                             $ko->bindParam(":idrole",$kolo);
                                             $ko->execute();
                                             $hasil = $ko->fetchAll(PDO::FETCH_OBJ);
@@ -117,7 +117,7 @@ require 'view/layout/sidebar.php';
                                             <td width=\"15%\">
                                             <table>
                                                 <tr>
-                                                    <td><a><button type=\"button\" class=\"btn btn-rounded btn-info btn-block\" title=\"Detail\"><span class=\"fa fa-eye\"></span></button></a></td>
+                                                    <td><a href=\"detail-cust.php?ido=$key->id\"><button type=\"button\" class=\"btn btn-rounded btn-info btn-block\" title=\"Detail\"><span class=\"fa fa-eye\"></span></button></a></td>
                                                 </tr>
                                             </table>
                                         </td>
