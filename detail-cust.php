@@ -145,7 +145,7 @@
                                     <h6>Status Izin Usaha</h6>
                                     </div>
                                     <div class="col-md-6">
-                                    <h6>: <?php echo $key['code_lama']?> / <?php echo $key['code_cust']?></h6>
+                                    <h6>: <?php echo $key['code_cust']?></h6>
                                     <h6>: <?php echo $key['nama_cust']?></h6>           
                                     <h6>: <?php echo $key['alamat_usaha']?></h6> 
                                     <h6>: <?php echo $key['jenis_bangunan']?></h6>      
@@ -156,12 +156,14 @@
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-6">
+                                    <h6>kode lama</h6>
                                     <h6>No.Telp  </h6>
                                     <h6>No.handphone  </h6>
                                     <h6>Limit Kredit lain  </h6>
                                     <h6>Limit Kredit</h6>
                                     </div>
                                     <div class="col-md-6">
+                                    <h6>: <?php echo $key['code_lama']?></h6>
                                     <h6>: <?php echo $key['notelp_usaha']?></h6>
                                     <h6>: <?php echo $key['nohandphone_usaha']?></h6>          
                                     <h6>: <?php echo $key['limit_kredit_dist_lain']?></h6>
