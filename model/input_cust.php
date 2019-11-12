@@ -9,14 +9,14 @@ require "../conn/koneksi.php";
  $kokab = $kolo[0];
  echo $nakokab = $kolo[1]." ".$kolo[2];
 
- $queryq = $db->prepare("SELECT max(id) as def FROM master_customer where id!=':id'");
+ $queryq = $db->prepare("SELECT count(id) as def FROM master_customer where id!=':id' and code_cust LIKE '%B%'");
  $id="dasda";
  $queryq->bindParam(":id",$id);
  $queryq->execute();
  $hasel = $queryq->fetchAll();
 
  foreach ($hasel as $koy) {
-     $userid = $koy['def'];
+     $userid = $koy['def']+1;
  }
 
  if($userid<=9){
@@ -27,8 +27,31 @@ require "../conn/koneksi.php";
      $ido="0".$userid;
  }else if($userid>999&&$userid<=9999){
      $ido=$userid;
+ }else {
+    $ido="0000";
  }
 
+ $querya = $db->prepare("SELECT count(id) as def FROM master_customer where id!=':id' and code_cust LIKE 'A%'");
+ $id="dasda";
+ $querya->bindParam(":id",$id);
+ $querya->execute();
+ $hasal = $querya->fetchAll();
+
+ foreach ($hasal as $koy) {
+     $userida = $koy['def'];
+ }
+
+ if($userida<=9){
+     $ida="000".$userida;
+ }else if($userida>9&&$userida<=99){
+     $ida="00".$userida;
+ }else if($userida>99&&$userida<=999){
+     $ida="0".$userida;
+ }else if($userid>999&&$userida<=9999){
+     $ida=$userida;
+ }else {
+    $ida="0000";
+ }
 
  
  $querykokab = $db->prepare("SELECT * FROM kode_area where cityorkab=:cityorkab and citykabname=:citykabname");
@@ -40,7 +63,7 @@ require "../conn/koneksi.php";
     foreach ($hasol as $key) {
         //echo $key['area'];
         if(strpos($key['area'],'JTG')===0||strpos($key['area'],'JTM')===0||strpos($key['area'],'LPT')===0){
-            echo $code_cust="A".$key['kode_sub'].$key['kode_kokab'].$ido;
+            echo $code_cust="A".$key['kode_sub'].$key['kode_kokab'].$ida;
 
         }if(strpos($key['area'],'DKI')===0||strpos($key['area'],'JBR')===0||strpos($key['area'],'LPB')===0){
 
@@ -222,6 +245,6 @@ $mainQuery->bindParam(":foto_gedung_jauh",$fotoGedungJauh);
 $mainQuery->bindParam(":foto_gedung_dekat",$fotoGedungDekat);
 
 $mainQuery->execute();
-// header('location:../manage.php');
+header('location:../manage.php');
 
 ?>
