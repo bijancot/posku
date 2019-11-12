@@ -106,7 +106,7 @@
                         <!-- Basic -->
                         <div class="row">
                             <div class="col-md-12">
-                                
+
                             </div>
                         </div>
                         <!-- first -->
@@ -127,7 +127,7 @@
                            <div class="col-md-6">
                            <p><strong>Kota CUstomer</strong></p>
                                     <label class="field select">
-                                       <select class="form-control select2-single" name="code_cust3" id="kokab">
+                                       <select class="form-control select2-single" name="code_cust3" id="kokabhoo">
                                           <option value="" selected="selected">Kota/Kab</option>
                                           <?php
                                                 $select = $db->prepare("SELECT cityorkab, citykabname FROM kode_area");
@@ -139,6 +139,8 @@
                                           <?php }?>
                                        </select>
                                     </label>
+                                    <div id="pilih">
+                                    </div>
                               </div>
                               <div class="row">
                                     <div class="col-md-12">
