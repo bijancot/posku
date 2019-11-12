@@ -127,7 +127,7 @@
                     foreach ($hasil2 as $key1) {?>
                     <div class="col-md-6"><h2 style="text-align:left">Detail Customer</h2></div>
                     <div class="col-md-6"> <h6 style="text-align:right">kode area : <?php echo $key1['area'];?></h6>
-                    <h6 style="text-align:right">Kota/Kabupaten : <?php echo $key['cityorkab']." ".$key1['citykabname']; }?></h6></div>
+                    <h6 style="text-align:right">Kota/Kabupaten : <?php echo $key1['cityorkab']." ".$key1['citykabname']; }?></h6></div>
                   </div>
                   </div>
                   <div class="panel-body pn">
