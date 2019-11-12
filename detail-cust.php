@@ -105,19 +105,34 @@
             <!-- AllCP Grid -->
             <div class="allcp-form">
                <div class="panel">
-                  <div class="panel-heading">
-                  <h2>Detail Customer</h2>
-                  </div>
-                  <div class="panel-body pn">
-                    <!-- first -->
-                    <div id="first">
-                    <?php
+                  <div class="panel-heading heading-right">
+                  <?php
                     $query = $db->prepare("SELECT * from master_customer where id=:id");
                     $query->bindParam(":id",$id);
                     $query->execute();
                     $hasil = $query->fetchAll();
+                  ?>
+                  <?php foreach ($hasil as $key) {?>
+                  <div class="row">
+                  <?php
+                  $kode_sub=$key['code_cust'][1].$key['code_cust'][2];
+                  $kode_kokab = $key['code_cust'][3].$key['code_cust'][4].$key['code_cust'][5];
+                  
+                    $query2 = $db->prepare("SELECT * from kode_area where kode_kokab=:kokab and kode_sub=:sub");
+                    $query2->bindParam(":kokab",$kode_kokab);
+                    $query2->bindParam(":sub",$kode_sub);
+                    $query2->execute();
+                    $hasil2 = $query2->fetchAll();
 
-                    foreach ($hasil as $key) {?>
+                    foreach ($hasil2 as $key1) {?>
+                    <div class="col-md-6"><h2 style="text-align:left">Detail Customer</h2></div>
+                    <div class="col-md-6"> <h6 style="text-align:right">kode area : <?php echo $key1['area'];?></h6>
+                    <h6 style="text-align:right">Kota/Kabupaten : <?php echo $key['cityorkab']." ".$key1['citykabname']; }?></h6></div>
+                  </div>
+                  </div>
+                  <div class="panel-body pn">
+                    <!-- first -->
+                    <div id="first">
                         <div class="row">
                         <h5>Data Pokok</h5>
                             <div class="col-md-6">
@@ -155,8 +170,6 @@
                                 </div>
                             </div>
                         </div>
-                
-                    
                     </div>
                     <!-- first -->
                     <br/><br/>
