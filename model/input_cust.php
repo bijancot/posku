@@ -40,7 +40,6 @@ require "../conn/koneksi.php";
     foreach ($hasol as $key) {
         //echo $key['area'];
         if(strpos($key['area'],'JTG')===0||strpos($key['area'],'JTM')===0||strpos($key['area'],'LPT')===0){
-            // 
             echo $code_cust="A".$key['kode_sub'].$key['kode_kokab'].$ido;
 
         }if(strpos($key['area'],'DKI')===0||strpos($key['area'],'JBR')===0||strpos($key['area'],'LPB')===0){
@@ -223,6 +222,6 @@ $mainQuery->bindParam(":foto_gedung_jauh",$fotoGedungJauh);
 $mainQuery->bindParam(":foto_gedung_dekat",$fotoGedungDekat);
 
 $mainQuery->execute();
-header('location:../manage.php');
+// header('location:../manage.php');
 
 ?>
