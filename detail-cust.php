@@ -184,6 +184,7 @@
                                         <?php echo $key['npwp_numb']?>
                                     </div>
                                 </div>
+                                <a href="<?php echo $key['npwp_foto'];?>">Unduh Dokumen NPWP</a>
                             </div>
                             <div class="col-md-5">
                                 <h6>Masa Berlaku NPWP<h6>
@@ -203,6 +204,7 @@
                                         <?php echo $key['siup_numb']?>
                                     </div>
                                 </div>
+                                <a href="<?php echo $key['siup_foto'];?>">Unduh Dokumen SIUP</a>
                             </div>
                             <div class="col-md-5">
                                 <h6>Masa Berlaku SIUP<h6>
@@ -222,6 +224,7 @@
                                         <?php echo $key['siupmb_numb']?>
                                     </div>
                                 </div>
+                                <a href="<?php echo $key['siupmenengah_foto'];?>">Unduh Dokumen SIUPMB</a>
                             </div>
                             <div class="col-md-5">
                                 <h6>Masa Berlaku SIUPMB<h6>
@@ -241,6 +244,7 @@
                                         <?php echo $key['siupmenengah_numb']?>
                                     </div>
                                 </div>
+                                <a href="<?php echo $key['siupmenengah_foto'];?>">Unduh Dokumen SIUP Menengah</a>
                             </div>
                             <div class="col-md-5">
                                 <h6>Masa Berlaku SIUPMenengah<h6>
@@ -260,6 +264,7 @@
                                         <?php echo $key['nppbkc_numb']?>
                                     </div>
                                 </div>
+                                <a href="<?php echo $key['nppbkc_foto'];?>">Unduh Dokumen NPPBKC</a>
                             </div>
                             <div class="col-md-5">
                                 <h6>Masa Berlaku NPPBKC<h6>
@@ -347,11 +352,11 @@
                             foreach ($hasil as $key) {?>
                                 <div class="col-md-6">
                                         <h6> Foto jarak Jauh Gedung </h6>
-                                        <img src="<?php echo $key['foto_gedung_jauh']?>" height="60px" width="110px">
+                                        <img src="<?php echo "../posku/".$key['foto_gedung_jauh']?>" height="60px" width="110px">
                                 </div>
                                 <div class="col-md-6">
                                         <h6> Foto jarak Dekat Gedung </h6>
-                                        <img src="<?php echo $key['foto_gedung_dekat']?>" height="60px" width="110px">
+                                        <img src="<?php echo "../posku/".$key['foto_gedung_dekat']?>" height="60px" width="110px">
                                 </div>
                             <?php }?>
                         </div>
