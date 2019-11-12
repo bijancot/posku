@@ -134,7 +134,27 @@
 <script src="view/assets/js/pages/user-forms-additional-inputs.js"></script>
 
 
+<script>
+function getSelectedEmplpyee()
+{
+ var selectedId = $('#kokabhoo').val();
+$.ajax({
+  type: "POST",
+  url: "test.php",
+  data: {selected: selectedId},
+  success: function(response) {
+    $("#pilih").html(response);
+  },
+  error: function(data) {
+    $("#pilih").html(response);
+  }
+});
+}
 
+$('#kokabhoo').change(function() {
+  getSelectedEmplpyee();
+});
+</script>
 </body>
 
 </html>
