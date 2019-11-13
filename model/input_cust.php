@@ -9,48 +9,35 @@ require "../conn/koneksi.php";
  $kokab = $kolo[0];
  echo $nakokab = $kolo[1]." ".$kolo[2];
 
- $queryq = $db->prepare("SELECT count(id) as def FROM master_customer where id!=':id' and code_cust LIKE '%B%'");
- $id="dasda";
- $queryq->bindParam(":id",$id);
- $queryq->execute();
- $hasel = $queryq->fetchAll();
+ $init = "sa";
+ $qq = $db->prepare("SELECT * FROM master_counter where id!=:id");
+ $qq->bindParam(":id",$init);
+ $qq->execute();
+ $haq = $qq->fetchAll();
 
- foreach ($hasel as $koy) {
-     $userid = $koy['def']+1;
+foreach ($haq as $key) {
+    $idazero = $key['cust_area_a']+1;
+    $idozero = $key['cust_area_b']+1;
+}
+
+if($idazero<=9){
+     $ida="000".$idazero;
+ }else if($idazero>9&&$idazero<=99){
+     $ida="00".$idazero;
+ }else if($idazero>99&&$idazero<=999){
+     $ida="0".$idazero;
+ }else if($idazero>999&&$idazero<=9999){
+     $ida=$idazero;
  }
 
- if($userid<=9){
-     $ido="000".$userid;
- }else if($userid>9&&$userid<=99){
-     $ido="00".$userid;
- }else if($userid>99&&$userid<=999){
-     $ido="0".$userid;
- }else if($userid>999&&$userid<=9999){
-     $ido=$userid;
- }else {
-    $ido="0000";
- }
-
- $querya = $db->prepare("SELECT count(id) as def FROM master_customer where id!=':id' and code_cust LIKE 'A%'");
- $id="dasda";
- $querya->bindParam(":id",$id);
- $querya->execute();
- $hasal = $querya->fetchAll();
-
- foreach ($hasal as $koy) {
-     $userida = $koy['def'];
- }
-
- if($userida<=9){
-     $ida="000".$userida;
- }else if($userida>9&&$userida<=99){
-     $ida="00".$userida;
- }else if($userida>99&&$userida<=999){
-     $ida="0".$userida;
- }else if($userid>999&&$userida<=9999){
-     $ida=$userida;
- }else {
-    $ida="0000";
+if($idozero<=9){
+     $ido="000".$idozero;
+ }else if($idozero>9&&$idozero<=99){
+     $ido="00".$idozero;
+ }else if($idozero>99&&$idozero<=999){
+     $ido="0".$idozero;
+ }else if($idozero>999&&$idozero<=9999){
+     $ido=$idozero;
  }
 
  
@@ -59,15 +46,15 @@ require "../conn/koneksi.php";
     $querykokab->bindParam(":citykabname",$nakokab);
     $querykokab->execute();
     $hasol = $querykokab->fetchAll();
-
     foreach ($hasol as $key) {
         //echo $key['area'];
         if(strpos($key['area'],'JTG')===0||strpos($key['area'],'JTM')===0||strpos($key['area'],'LPT')===0){
             echo $code_cust="A".$key['kode_sub'].$key['kode_kokab'].$ida;
-
+            $kolo="counter_a";
         }if(strpos($key['area'],'DKI')===0||strpos($key['area'],'JBR')===0||strpos($key['area'],'LPB')===0){
 
             echo $code_cust="B".$key['kode_sub'].$key['kode_kokab'].$ido;
+            $kolo="counter_b";
         }
     }
 
@@ -245,7 +232,20 @@ $mainQuery->bindParam(":foto_gedung_jauh",$fotoGedungJauh);
 $mainQuery->bindParam(":foto_gedung_dekat",$fotoGedungDekat);
 
 $mainQuery->execute();
+$inito =1;
+if($kolo=="counter_a"){
+    $upcounter = $db->prepare("UPDATE master_counter set cust_area_a=:ida where id=:id");
+    $upcounter->bindParam(":id",$inito);
+    $upcounter->bindParam(":ida",$ida);
+    
+}elseif($kolo=="counter_b"){
+    $upcounter = $db->prepare("UPDATE master_counter set cust_area_b=:ido where id=:id");
+    $upcounter->bindParam(":id",$inito);
+    $upcounter->bindParam(":ido",$ido);
+    
+}
+
+$upcounter->execute();
 header('location:../manage.php');
 
 ?>
->>>>>>> 33c0001802c7d3860d8062b119fdc88a6846041b
