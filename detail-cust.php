@@ -319,7 +319,7 @@
                     <!-- third -->
                     <br/><br/><br/>
                     <!-- forth -->
-                    <div id="forth">
+                    <div id="forth" class="mixitup-controls">
                             <div class="row">
                                 <h5>Produk Yang dijual Saat ini<h5>
                         <?php
@@ -332,7 +332,9 @@
 
                                     <div class="col-md-4">
                                     <h6> Nama Produk : <?php echo $key3['nama']?></h6>
-                                    <img src="<?php echo $key3['foto']?>" height="60px" width="110px">
+                                    <!-- <img class="img-responsive" src="<?php //echo $key3['foto']?>" height="60px" width="110px"> -->
+
+                                    <a href="<?php echo $key3['foto']?>" data-fancybox="produk" data-caption="<?php echo $key3['nama']?>"><img src="<?php echo $key3['foto']?>" height="60px" width="110px"></a>
                                     <h6>Qty : <?php echo $key3['qty']?> </h6>
                                     </div>
                             
@@ -354,11 +356,11 @@
                             foreach ($hasil as $key) {?>
                                 <div class="col-md-6">
                                         <h6> Foto jarak Jauh Gedung </h6>
-                                        <img src="<?php echo "../posku/".$key['foto_gedung_jauh']?>" height="60px" width="110px">
+                                        <a href="<?php echo "../posku/".$key['foto_gedung_jauh']?>" data-fancybox="images" data-caption="Foto Jarak Jauh Gedung"><img src="<?php echo "../posku/".$key['foto_gedung_jauh']?>" height="60px" width="110px"></a>
                                 </div>
                                 <div class="col-md-6">
                                         <h6> Foto jarak Dekat Gedung </h6>
-                                        <img src="<?php echo "../posku/".$key['foto_gedung_dekat']?>" height="60px" width="110px">
+                                        <a href="<?php echo "../posku/".$key['foto_gedung_dekat']?>" data-fancybox="images" data-caption="Foto Jarak Dekat Gedung"><img class="img-responsive" src="<?php echo "../posku/".$key['foto_gedung_dekat']?>" height="60px" width="110px"></a>
                                 </div>
                             <?php }?>
                         </div>
