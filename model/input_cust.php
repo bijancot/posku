@@ -17,30 +17,30 @@ require "../conn/koneksi.php";
 
 foreach ($haq as $key) {
     $idazero = $key['cust_area_a']+1;
+    
+    if($idazero<=9){
+        $ida="000".$idazero;
+    }else if($idazero>9&&$idazero<=99){
+        $ida="00".$idazero;
+    }else if($idazero>99&&$idazero<=999){
+        $ida="0".$idazero;
+    }else if($idazero>999&&$idazero<=9999){
+        $ida=$idazero;
+    }
+
     $idozero = $key['cust_area_b']+1;
+
+    if($idozero<=9){
+        $ido="000".$idozero;
+    }else if($idozero>9&&$idozero<=99){
+        $ido="00".$idozero;
+    }else if($idozero>99&&$idozero<=999){
+        $ido="0".$idozero;
+    }else if($idozero>999&&$idozero<=9999){
+        $ido=$idozero;
+    }
 }
-
-if($idazero<=9){
-     $ida="000".$idazero;
- }else if($idazero>9&&$idazero<=99){
-     $ida="00".$idazero;
- }else if($idazero>99&&$idazero<=999){
-     $ida="0".$idazero;
- }else if($idazero>999&&$idazero<=9999){
-     $ida=$idazero;
- }
-
-if($idozero<=9){
-     $ido="000".$idozero;
- }else if($idozero>9&&$idozero<=99){
-     $ido="00".$idozero;
- }else if($idozero>99&&$idozero<=999){
-     $ido="0".$idozero;
- }else if($idozero>999&&$idozero<=9999){
-     $ido=$idozero;
- }
-
- 
+ $koloa="asd";
  $querykokab = $db->prepare("SELECT * FROM kode_area where cityorkab=:cityorkab and citykabname=:citykabname");
     $querykokab->bindParam(":cityorkab",$kokab);
     $querykokab->bindParam(":citykabname",$nakokab);
@@ -50,13 +50,15 @@ if($idozero<=9){
         //echo $key['area'];
         if(strpos($key['area'],'JTG')===0||strpos($key['area'],'JTM')===0||strpos($key['area'],'LPT')===0){
             echo $code_cust="A".$key['kode_sub'].$key['kode_kokab'].$ida;
-            $kolo="counter_a";
+            $koloa="counter_a";
         }if(strpos($key['area'],'DKI')===0||strpos($key['area'],'JBR')===0||strpos($key['area'],'LPB')===0){
 
             echo $code_cust="B".$key['kode_sub'].$key['kode_kokab'].$ido;
-            $kolo="counter_b";
+            $koloa="counter_b";
         }
     }
+
+    // echo $kolo;
 
  $nama_cust = $_POST['nama_cust'];
  $alamat_usaha = $_POST['alamat_usaha'];
@@ -69,6 +71,7 @@ if($idozero<=9){
  $npwp_numb = $_POST['npwp_numb'];
  $npwp_foto = $_FILES['npwp_foto']['name'];
  $npwp_foto_tmp = $_FILES['npwp_foto']['tmp_name'];
+ $_FILES['npwp_foto'];
  $npwp_masa = $_POST['npwp_masa'];
  $siup_numb = $_POST['siup_numb'];
  $siup_foto = $_FILES['siup_foto']['name'];
@@ -111,12 +114,13 @@ $foto_gedung_dekat_tmp = $_FILES['foto_gedung_dekat']['tmp_name'];
     if($nama_produk[$a]==null || $foto_produk_tmp[$a]==null){
         continue;
     }else{
-        $foto_produk_tmp[$a];
+        echo $foto_produk_tmp[$a];
         $fotoProduk[$a] = "../images/produk/".$foto_produk[$a];
-        $kolo[$a] = "images/produk/".$foto_produk[$a];
+        $kolo[$a] = "../images/produk/".$foto_produk[$a];
+        //var_dump(move_uploaded_file($foto_produk_tmp[$a],$fotoProduk[$a]));  
         if(move_uploaded_file($foto_produk_tmp[$a],$fotoProduk[$a])){
             $queryProduk = $db->prepare("INSERT INTO `produk_customer`(`foto`,`qty`,`nama`,`no_customer`) VALUES(:foto,:qty,:nama,:code_customer)");
-            $queryProduk->bindParam(":foto",$kolo[$a]);
+            $queryProduk->bindParam(":foto",$fotoProduk[$a]);
             $queryProduk->bindParam(":qty",$qty_produk[$a]);
             $queryProduk->bindParam(":nama",$nama_produk[$a]);
             $queryProduk->bindParam(":code_customer",$code_cust);
@@ -232,20 +236,21 @@ $mainQuery->bindParam(":foto_gedung_jauh",$fotoGedungJauh);
 $mainQuery->bindParam(":foto_gedung_dekat",$fotoGedungDekat);
 
 $mainQuery->execute();
-$inito =1;
-if($kolo=="counter_a"){
-    $upcounter = $db->prepare("UPDATE master_counter set cust_area_a=:ida where id=:id");
-    $upcounter->bindParam(":id",$inito);
-    $upcounter->bindParam(":ida",$ida);
-    
-}elseif($kolo=="counter_b"){
+
+echo $koloa; 
+$inito ="1";
+if($koloa=="counter_a"){
+    $upcounter1 = $db->prepare("UPDATE master_counter set cust_area_a=:ida where id=:id");
+    $upcounter1->bindParam(":id",$inito);
+    $upcounter1->bindParam(":ida",$ida);
+    $upcounter1->execute();
+}elseif($koloa=="counter_b"){
     $upcounter = $db->prepare("UPDATE master_counter set cust_area_b=:ido where id=:id");
     $upcounter->bindParam(":id",$inito);
     $upcounter->bindParam(":ido",$ido);
-    
+    $upcounter->execute();
 }
 
-$upcounter->execute();
 header('location:../manage.php');
 
 ?>
