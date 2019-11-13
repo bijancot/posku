@@ -134,6 +134,9 @@
 <script src="view/assets/js/pages/user-forms-additional-inputs.js"></script>
 
 
+<script src="assets/js/plugins/mixitup/jquery.mixitup.min.js"></script>
+<script src="view/assets/js/plugins/magnific/jquery.magnific-popup.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 <script>
 function getSelectedEmplpyee()
 {
