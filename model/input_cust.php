@@ -7,7 +7,7 @@ require "../conn/koneksi.php";
  $kolo = explode(" ",$code_cust3);
 
  $kokab = $kolo[0];
- echo $nakokab = $kolo[1]." ".$kolo[2];
+ $nakokab = $kolo[1]." ".$kolo[2];
 
  $init = "sa";
  $qq = $db->prepare("SELECT * FROM master_counter where id!=:id");
@@ -49,11 +49,11 @@ foreach ($haq as $key) {
     foreach ($hasol as $key) {
         //echo $key['area'];
         if(strpos($key['area'],'JTG')===0||strpos($key['area'],'JTM')===0||strpos($key['area'],'LPT')===0){
-            echo $code_cust="A".$key['kode_sub'].$key['kode_kokab'].$ida;
+            $code_cust="A".$key['kode_sub'].$key['kode_kokab'].$ida;
             $koloa="counter_a";
         }if(strpos($key['area'],'DKI')===0||strpos($key['area'],'JBR')===0||strpos($key['area'],'LPB')===0){
 
-            echo $code_cust="B".$key['kode_sub'].$key['kode_kokab'].$ido;
+            $code_cust="B".$key['kode_sub'].$key['kode_kokab'].$ido;
             $koloa="counter_b";
         }
     }
@@ -61,6 +61,8 @@ foreach ($haq as $key) {
     // echo $kolo;
 
  $nama_cust = $_POST['nama_cust'];
+
+
  $alamat_usaha = $_POST['alamat_usaha'];
  $notelp_usaha = $_POST['notelp_usaha'];
  $nohandphone_usaha = $_POST['nohandphone_usaha'];
@@ -89,6 +91,10 @@ foreach ($haq as $key) {
  $nppbkc_foto = $_FILES['nppbkc_foto']['name'];
  $nppbkc_foto_tmp = $_FILES['nppbkc_foto']['tmp_name'];
  $nppbkc_masa = $_POST['nppbkc_masa'];
+ echo $kbli = $_POST['kbli'];
+ echo $kbli_tahun = $_POST['kbli_tahun'];
+ echo $kelurahan = $_POST['alamat_kelurahan'];
+ echo $kecamatan = $_POST['alamat_kecamatan'];
 
 $limit_kredit = $_POST['limit_kredit'];
 $limit_kredit_dist_lain = $_POST['limit_kredit_dist_lain'];
@@ -109,12 +115,14 @@ $foto_gedung_dekat_tmp = $_FILES['foto_gedung_dekat']['tmp_name'];
  $alamat_pj = $_POST['alamat_pj'];
  $notelp_pj = $_POST['notelp_pj'];
  $npwp_pj = $_POST['npwp_pj'];
+ echo $kelurahan_pj = $_POST['alamat_pj_kelurahan'];
+ echo $kecamatan_pj = $_POST['alamat_pj_kecamatan'];
 
  for($a=0; $a<sizeof($nama_produk);$a++){
     if($nama_produk[$a]==null || $foto_produk_tmp[$a]==null){
         continue;
     }else{
-        echo $foto_produk_tmp[$a];
+        $foto_produk_tmp[$a];
         $fotoProduk[$a] = "../images/produk/".$foto_produk[$a];
         $kolo[$a] = "../images/produk/".$foto_produk[$a];
         //var_dump(move_uploaded_file($foto_produk_tmp[$a],$fotoProduk[$a]));  
@@ -131,13 +139,15 @@ $foto_gedung_dekat_tmp = $_FILES['foto_gedung_dekat']['tmp_name'];
     }
  }
 
- $queryPj = $db->prepare("INSERT INTO master_pj (nama,notelp,alamat,noktp,nonpwp) values(:nama,:notelp,:alamat,:noktp,:nonpwp)");
+ $queryPj = $db->prepare("INSERT INTO master_pj (nama,notelp,alamat,noktp,nonpwp,kelurahan,kecamatan) values(:nama,:notelp,:alamat,:noktp,:nonpwp,kelurahan,kecamatan)");
  
  $queryPj->bindParam(":nama",$nama_pj);
  $queryPj->bindParam(":notelp",$notelp_pj);
  $queryPj->bindParam(":alamat",$alamat_pj);
  $queryPj->bindParam(":noktp",$noktp_pj);
  $queryPj->bindParam(":nonpwp",$npwp_pj);
+ $queryPj->bindParam(":kelurahan",$kelurahan_pj);
+ $queryPj->bindParam(":kecamatan",$kecamatan_pj);
  
  $queryPj->execute();
 
@@ -188,7 +198,7 @@ $mainQuery = $db->prepare("INSERT INTO master_customer(code_lama,
                             jenis_bangunan,status_ijin_usaha,
                             id_pj,
                             limit_kredit,limit_kredit_dist_lain,
-                            foto_gedung_jauh,foto_gedung_dekat) VALUES(
+                            foto_gedung_jauh,foto_gedung_dekat,kode_kbli,tahun_kbli,kelurahan,kecamatan) VALUES(
                             :code_lama,
                             :code_cust,
                             :nama_cust,
@@ -203,7 +213,7 @@ $mainQuery = $db->prepare("INSERT INTO master_customer(code_lama,
                             :jenis_bangunan,:status_ijin_usaha,
                             :id_pj,
                             :limit_kredit,:limit_kredit_dist_lain,
-                            :foto_gedung_jauh,:foto_gedung_dekat)");
+                            :foto_gedung_jauh,:foto_gedung_dekat,:kode_kbli,:tahun_kbli,kelurahan,kecamatan)");
 
 
 $mainQuery->bindParam(":code_lama",$code_lama);
@@ -234,6 +244,10 @@ $mainQuery->bindParam(":limit_kredit",$limit_kredit);
 $mainQuery->bindParam(":limit_kredit_dist_lain",$limit_kredit_dist_lain);
 $mainQuery->bindParam(":foto_gedung_jauh",$fotoGedungJauh);
 $mainQuery->bindParam(":foto_gedung_dekat",$fotoGedungDekat);
+$mainQuery->bindParam(":kode_kbli",$kbli);
+$mainQuery->bindParam(":tahun_kbli",$kbli_tahun);
+$mainQuery->bindParam(":kelurahan",$kelurahan);
+$mainQuery->bindParam(":kecamatan",$kecamatan);
 
 $mainQuery->execute();
 
