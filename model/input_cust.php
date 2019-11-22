@@ -120,7 +120,7 @@ $foto_gedung_dekat_tmp = $_FILES['foto_gedung_dekat']['tmp_name'];
         //var_dump(move_uploaded_file($foto_produk_tmp[$a],$fotoProduk[$a]));  
         if(move_uploaded_file($foto_produk_tmp[$a],$fotoProduk[$a])){
             $queryProduk = $db->prepare("INSERT INTO `produk_customer`(`foto`,`qty`,`nama`,`no_customer`) VALUES(:foto,:qty,:nama,:code_customer)");
-            $queryProduk->bindParam(":foto",$fotoProduk[$a]);
+            $queryProduk->bindParam(":foto",$kolo[$a]);
             $queryProduk->bindParam(":qty",$qty_produk[$a]);
             $queryProduk->bindParam(":nama",$nama_produk[$a]);
             $queryProduk->bindParam(":code_customer",$code_cust);
