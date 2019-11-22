@@ -1,0 +1,30 @@
+ $init = "sa";
+ $qq = $db->prepare("SELECT * FROM master_counter where id!=:id");
+ $qq->bindParam(":id",$init);
+ $qq->execute();
+ $haq = $qq->fetchAll();
+
+foreach ($haq as $key) {
+    $idazero = $key['cust_area_a']+1;
+    $idozero = $key['cust_area_b']+1;
+}
+
+if($idazero<=9){
+     $ida="000".$idazero;
+ }else if($idazero>9&&$idazero<=99){
+     $ida="00".$idazero;
+ }else if($idazero>99&&$idazero<=999){
+     $ida="0".$idazero;
+ }else if($idazero>999&&$idazero<=9999){
+     $ida=$idazero;
+ }
+
+if($idozero<=9){
+     $ido="000".$idozero;
+ }else if($idozero>9&&$idozero<=99){
+     $ido="00".$idozero;
+ }else if($idozero>99&&$idozero<=999){
+     $ido="0".$idozero;
+ }else if($idozero>999&&$idozero<=9999){
+     $ido=$idozero;
+ }

@@ -116,7 +116,7 @@
                            <div class="col-md-6">
                            <p><strong>Kode Lama</strong></p>
                               <label class="field prepend-icon">
-                              <input type="text" name="code_lama" id="firstname" class="gui-input" placeholder="Kode Lama Kustomer">
+                              <input type="text" name="code_lama" id="firstname" class="gui-input" placeholder="Kode Lama Kustomer" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
                               <span class="field-icon">
                               <i class="fa fa-slack"></i>
                               </span>
@@ -146,7 +146,7 @@
                                     <div class="col-md-12">
                                     <p><strong>Nama Customer</strong></p>
                                        <label class="field prepend-icon">
-                                          <input type="text" name="nama_cust" id="firstname" class="gui-input" placeholder="Nama Kustomer">
+                                          <input type="text" name="nama_cust" id="firstname" class="gui-input" placeholder="Nama Kustomer" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
                                           <span class="field-icon">
                                           <i class="fa fa-user"></i>
                                           </span>
@@ -154,8 +154,29 @@
                                     <br/>
                                     <br/>
                                     <p><strong>Alamat lengkap customer</strong></p>
+                                    <div class="row">
+                                          <div class="col-md-6">
+                                          <p><strong>Alamat Kelurahan</strong></p>
+                                             <label class="field prepend-icon">
+                                                <input type="text" name="alamat_kelurahan" id="firstname" class="gui-input" placeholder="Alamat Kelurahan" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
+                                                <span class="field-icon">
+                                                <i class="fa fa-home"></i>
+                                                </span>
+                                             </label>
+                                          </div>
+                                          <div class="col-md-6">
+                                          <p><strong>Alamat Kecamatan</strong></p>
+                                             <label class="field prepend-icon">
+                                                <input type="text" name="alamat_kecamatan" id="firstname" class="gui-input" placeholder="Alamat Kecamatan" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
+                                                <span class="field-icon">
+                                                <i class="fa fa-home"></i>
+                                                </span>
+                                             </label>
+                                          </div>
+                                          
+                                       </div><br/><br/>
                                        <label class="field prepend-icon">
-                                       <textarea class="gui-textarea" id="comment" name="alamat_usaha" placeholder="Alamat Usaha"></textarea>
+                                       <textarea class="gui-textarea" id="comment" name="alamat_usaha" placeholder="Alamat Usaha" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);"></textarea>
                                        <span class="field-icon">
                                        <i class="fa fa-list"></i>
                                        </span>
@@ -168,7 +189,7 @@
                                  <div class="col-md-6">
                                     <p><strong>No. Telp</strong></p>
                                     <label class="field prepend-icon">
-                                    <input type="text" name="notelp_usaha" id="firstname" class="gui-input" placeholder="No Telp Usaha">
+                                    <input type="text" name="notelp_usaha" id="firstname" class="gui-input" placeholder="No Telp Usaha" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
                                     <span class="field-icon">
                                     <i class="fa fa-phone"></i>
                                     </span>
@@ -177,7 +198,7 @@
                                     <br/>
                                     <p><strong>No. Hp</strong></p>
                                     <label class="field prepend-icon">
-                                    <input type="text" name="nohandphone_usaha" id="firstname" class="gui-input" placeholder="no. HP Usaha">
+                                    <input type="text" name="nohandphone_usaha" id="firstname" class="gui-input" placeholder="no. HP Usaha" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
                                     <span class="field-icon">
                                     <i class="fa fa-mobile"></i>
                                     </span>
@@ -187,7 +208,7 @@
                                  </div>
                                  <div class="col-md-6">
                                  <p><strong>Jenis Bangunan</strong></p>
-                                    <select class="select2-single form-control" name="jenis_bangunan">
+                                    <select class="select2-single form-control" name="jenis_bangunan" >
                                        <option>Jenis Bangunan</option>
                                        <option value="Gerobak">Gerobak</option>
                                        <option value="RestoorCafe">Resto / Cafe</option>
@@ -196,13 +217,6 @@
                                        <option value="Gudang">Gudang</option>
                                     </select>
                                     <br/><br/>
-                                    <p><strong>Status Ijin usaha</strong></p>
-                                    <select class="select2-single form-control" name="status_ijin_usaha">
-                                       <option>Status Ijin Usaha</option>
-                                       <option value="Sub-Distributor">Sub-Distributor</option>
-                                       <option value="Pengecer">Pengecer</option>
-                                       <option value="PenjualLangsung">Penjual Langsung</option>
-                                    </select>
                                  </div>
                               </div>
                            </div>
@@ -217,7 +231,7 @@
                               <div class="col-md-8">
                                        <p><strong>No. NPWP</strong></p>
                                        <label class="field prepend-icon">
-                                       <input type="text" name="npwp_numb" id="firstname" class="gui-input" placeholder="No. NPWP">
+                                       <input type="text" id="npwp" name="npwp_numb" id="firstname" class="gui-input npwp" placeholder="No. NPWP" maxlength="20">
                                        <span class="field-icon">
                                        <i class="fa fa-at"></i>
                                        </span>
@@ -228,8 +242,18 @@
                                        <input type="file" name="npwp_foto"/>
                                     </div>
                                     <div class="col-md-4">
-                                       <p><strong>Tgl. Kadarluarsa NPWP</strong></p>
-                                       <input type="date" name="npwp_masa">
+                                       <p><strong>Status NPWP</strong></p>
+                                       <!-- <input type="date" name="npwp_masa"> -->
+                                          <h6><div class="row">
+                                             <div class="col-md-12">
+                                             <input type="radio" name="npwp_masa" value="AKTIF">Aktif</input>
+                                       
+                                             </div>
+                                             <div class="col-md-12">
+                                             <input type="radio" name="npwp_masa" value="TIDAK AKTIF">Tidak Aktif</input>
+                                             </div>
+                                          </div>
+                                          </h6>
                                        <br/>
                                     </div>
                            </div>
@@ -238,7 +262,7 @@
                                     <div class="col-md-8">
                                        <p><strong>No. SIUP</strong></p>
                                        <label class="field prepend-icon">
-                                       <input type="text" name="siup_numb" id="firstname" class="gui-input" placeholder="No. SIUP">
+                                       <input type="text" name="siup_numb" id="firstname" class="gui-input" placeholder="No. SIUP" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
                                        <span class="field-icon">
                                        <i class="fa fa-at"></i>
                                        </span>
@@ -247,11 +271,30 @@
                                        <br/>
                                        <p><strong>File foto SIUP</strong></p>
                                        <input type="file" name="siup_foto"/>
+                                                <br/><br/>
+                                       <div class="row">
+                                          <div class="col-md-6">
+                                          <p><strong>Kode Kbli</strong></p>
+                                             <input type="text" name="kbli" maxlength="5" class="gui-input" placeholder="kode kbli">
+                                          </div>
+                                          <div class="col-md-6">
+                                          <p><strong>Tahun Kbli</strong></p>
+                                             <input type="text" name="kbli_tahun" class="gui-input" placeholder="tahun kbli">
+                                          </div>
+                                       </div>
                                     </div>
                                     <div class="col-md-4">
-                                       <p><strong>Tgl. Kadarluarsa SIUP</strong></p>
+                                       <p><strong>Tgl. Terbit SIUP</strong></p>
                                        <input type="date" name="siup_masa">
-                                       <br/>
+                                       <br/><br/>
+                                       <p><strong>Jenis SIUP</strong></p>
+                                          <select class="select2-single form-control" name="jenis_siup" >
+                                             <option>Jenis SIUP</option>
+                                             <option value="KECIl">Kecil</option>
+                                             <option value="MENENGAH">Menengah</option>
+                                             <option value="BESAR">Besar</option>
+                                          </select>
+                                    <br/><br/>
                                     </div>
                            </div>
                            <div class="row">
@@ -259,7 +302,7 @@
                            <div class="col-md-8">
                                        <p><strong>No. SIUP-MB</strong></p>
                                        <label class="field prepend-icon">
-                                       <input type="text" name="siupmb_numb" id="firstname" class="gui-input" placeholder="no. SIUPMB">
+                                       <input type="text" name="siupmb_numb" id="firstname" class="gui-input" placeholder="no. SIUPMB" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
                                        <span class="field-icon">
                                        <i class="fa fa-at"></i>
                                        </span>
@@ -272,28 +315,14 @@
                                     <div class="col-md-4">
                                        <p><strong>Tgl. Kadarluarsa SIUP-MB</strong></p>
                                        <input type="date" name="siupmb_masa">
-                                       <br/>
-                                    </div>
-                           </div>
-                           <div class="row">
-                           <br/><br/><h6>Data SIUP Menengah :</h6><br/>
-                           <div class="col-md-8">
-                                       <p><strong>No. SIUP Menengah</strong></p>
-                                       <label class="field prepend-icon">
-                                       <input type="text" name="siupmenengah_numb" id="firstname" class="gui-input" placeholder="No. SIUP Menengah">
-                                       <span class="field-icon">
-                                       <i class="fa fa-phone"></i>
-                                       </span>
-                                       </label>
-                                       <br/>
-                                       <br/>
-                                       <p><strong>File foto SIUP Menengah</strong></p>
-                                       <input type="file" name="siupmenengah_foto"/>
-                                    </div>
-                                    <div class="col-md-4">
-                                       <p><strong>Tgl. Kadarluarsa SIUP-Menengah</strong></p>
-                                       <input type="date" name="siupmenengah_masa">
-                                       <br/>
+                                       <br/><br/>
+                                       <p><strong>Status Ijin usaha</strong></p>
+                                    <select class="select2-single form-control" name="status_ijin_usaha">
+                                       <option>Status Ijin Usaha</option>
+                                       <option value="Sub-Distributor">Sub-Distributor</option>
+                                       <option value="Pengecer">Pengecer</option>
+                                       <option value="PenjualLangsung">Penjual Langsung</option>
+                                    </select>
                                     </div>
                            </div>
                            <div class="row">
@@ -301,7 +330,7 @@
                            <div class="col-md-8">
                                        <p><strong>No. NPPBKC</strong></p>
                                        <label class="field prepend-icon">
-                                       <input type="text" name="nppbkc_numb" id="firstname" class="gui-input" placeholder="No. NPPBKC">
+                                       <input type="text" name="nppbkc_numb" id="firstname" class="gui-input" placeholder="No. NPPBKC" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
                                        <span class="field-icon">
                                        <i class="fa fa-phone"></i>
                                        </span>
@@ -328,7 +357,7 @@
                                     <div class="col-md-7">
                                        <p><strong>Nama Penanggung jawab</strong></p>
                                        <label class="field prepend-icon">
-                                       <input type="text" name="nama_pj" class="gui-input" placeholder="Nama Penanggung Jawab">
+                                       <input type="text" name="nama_pj" class="gui-input" placeholder="Nama Penanggung Jawab" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
                                        <span class="field-icon">
                                        <i class="fa fa-user"></i>
                                        </span>
@@ -339,7 +368,7 @@
                                     <div class="col-md-5">
                                        <p><strong>No KTP</strong></p>
                                        <label class="field prepend-icon">
-                                       <input type="text" name="noktp_pj" class="gui-input" placeholder="No. KTP penanggung jawab">
+                                       <input type="text" name="noktp_pj" class="gui-input ktp" placeholder="No. KTP penanggung jawab">
                                        <span class="field-icon">
                                        <i class="fa fa-slack"></i>
                                        </span>
@@ -352,7 +381,7 @@
                         <div class="col-md-5">
                                        <p><strong>No. telp / No. handphone</strong></p>
                                        <label class="field prepend-icon">
-                                       <input type="text" name="notelp_pj" class="gui-input" placeholder="Kontak penanggungjawab">
+                                       <input type="text" name="notelp_pj" class="gui-input" placeholder="Kontak penanggungjawab" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
                                        <span class="field-icon">
                                        <i class="fa fa-mobile"></i>
                                        </span>
@@ -360,10 +389,10 @@
                                        <br/>
                                        <br/>
                                     </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-6">
                                        <p><strong>No. NPWP</strong></p>
                                        <label class="field prepend-icon">
-                                       <input type="text" name="npwp_pj" class="gui-input" placeholder="No. NPWP Penanggung Jawab">
+                                       <input type="text" name="npwp_pj" class="form-control npwp" placeholder="No. NPWP Penanggung Jawab" maxlength="20">
                                        <span class="field-icon">
                                        <i class="fa fa-mobile"></i>
                                        </span>
@@ -371,11 +400,33 @@
                                        <br/>
                                        <br/>
                                        <br/>
+                                </div>
                                     </div>
                                     <div class="col-md-12">
                                     <p><strong>Alamat Lengkap Penanggung Jawab</strong></p>
+                                    <div class="row">
+                                          <div class="col-md-6">
+                                          <p><strong>Alamat Kelurahan</strong></p>
+                                             <label class="field prepend-icon">
+                                                <input type="text" name="alamat_pj_kelurahan" id="firstname" class="gui-input" placeholder="Alamat Kelurahan" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
+                                                <span class="field-icon">
+                                                <i class="fa fa-home"></i>
+                                                </span>
+                                             </label>
+                                          </div>
+                                          <div class="col-md-6">
+                                          <p><strong>Alamat Kecamatan</strong></p>
+                                             <label class="field prepend-icon">
+                                                <input type="text" name="alamat_pj_kecamatan" id="firstname" class="gui-input" placeholder="Alamat Kecamatan" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
+                                                <span class="field-icon">
+                                                <i class="fa fa-home"></i>
+                                                </span>
+                                             </label>
+                                          </div>
+                                          
+                                       </div><br/><br/>
                                        <label class="field prepend-icon">
-                                       <textarea class="gui-textarea" id="comment" name="alamat_pj" placeholder="Alamat Lengkap anda"></textarea>
+                                       <textarea class="gui-textarea" id="comment" name="alamat_pj" placeholder="Alamat Lengkap anda" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);"></textarea>
                                        <span class="field-icon">
                                        <i class="fa fa-list"></i>
                                        </span>
@@ -387,7 +438,7 @@
                                     <div class="col-md-6">
                                        <p><strong>Limit Kredit Dari distributor lain</strong></p>
                                        <label class="field prepend-icon">
-                                       <input type="text" name="limit_kredit_dist_lain" class="gui-input" placeholder="Limit Kredit Distributor Lain">
+                                       <input type="text" name="limit_kredit_dist_lain" class="gui-input" placeholder="Limit Kredit Distributor Lain" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
                                        <span class="field-icon">
                                        <i class="fa fa-dollar"></i>
                                        </span>
@@ -405,7 +456,7 @@
                                  <div class="col-md-6">
                                        <p><strong>Limit Kredit yang diajukan</strong></p>
                                        <label class="field prepend-icon">
-                                       <input type="text" name="limit_kredit" class="gui-input" placeholder="Limit Kredit yang Diajukan">
+                                       <input type="text" name="limit_kredit" class="gui-input" placeholder="Limit Kredit yang Diajukan" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
                                        <span class="field-icon">
                                        <i class="fa fa-dollar"></i>
                                        </span>
@@ -433,7 +484,7 @@
                                                                       <div class=\"col-md-8\">
                                                                           <p><strong>Nama Produk</strong></p>
                                                                           <label class=\"field prepend-icon\">
-                                                                              <input type=\"text\" name=\"nama_produk[]\" id=\"firstname\" class=\"gui-input\" placeholder=\"Nama Produk\">
+                                                                              <input type=\"text\" name=\"nama_produk[]\" id=\"firstname\" class=\"gui-input\" placeholder=\"Nama Produk\" oninput=\"let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);\">
                                                                               <span class=\"field-icon\">
                                  									<i class=\"fa fa-mobile\"></i>
                                  							</span>
