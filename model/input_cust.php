@@ -139,7 +139,7 @@ $foto_gedung_dekat_tmp = $_FILES['foto_gedung_dekat']['tmp_name'];
     }
  }
 
- $queryPj = $db->prepare("INSERT INTO master_pj (nama,notelp,alamat,noktp,nonpwp,kelurahan,kecamatan) values(:nama,:notelp,:alamat,:noktp,:nonpwp,kelurahan,kecamatan)");
+ $queryPj = $db->prepare("INSERT INTO master_pj (nama,notelp,alamat,noktp,nonpwp,kelurahan,kecamatan) values(:nama,:notelp,:alamat,:noktp,:nonpwp,:kelurahan,:kecamatan)");
  
  $queryPj->bindParam(":nama",$nama_pj);
  $queryPj->bindParam(":notelp",$notelp_pj);
@@ -213,7 +213,7 @@ $mainQuery = $db->prepare("INSERT INTO master_customer(code_lama,
                             :jenis_bangunan,:status_ijin_usaha,
                             :id_pj,
                             :limit_kredit,:limit_kredit_dist_lain,
-                            :foto_gedung_jauh,:foto_gedung_dekat,:kode_kbli,:tahun_kbli,kelurahan,kecamatan)");
+                            :foto_gedung_jauh,:foto_gedung_dekat,:kode_kbli,:tahun_kbli,:kelurahan,:kecamatan)");
 
 
 $mainQuery->bindParam(":code_lama",$code_lama);
