@@ -146,7 +146,7 @@
                                     <div class="col-md-12">
                                     <p><strong>Nama Customer</strong></p>
                                        <label class="field prepend-icon">
-                                          <input type="text" name="nama_cust" id="firstname" class="gui-input" placeholder="Nama Kustomer" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
+                                          <input type="text" name="nama_cust" id="firstname" class="gui-input" placeholder="Nama Kustomer" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);" required>
                                           <span class="field-icon">
                                           <i class="fa fa-user"></i>
                                           </span>
@@ -158,7 +158,7 @@
                                           <div class="col-md-6">
                                           <p><strong>Alamat Kelurahan</strong></p>
                                              <label class="field prepend-icon">
-                                                <input type="text" name="alamat_kelurahan" id="firstname" class="gui-input" placeholder="Alamat Kelurahan" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
+                                                <input type="text" name="alamat_kelurahan" id="firstname" class="gui-input" placeholder="Alamat Kelurahan" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);" required>
                                                 <span class="field-icon">
                                                 <i class="fa fa-home"></i>
                                                 </span>
@@ -167,7 +167,7 @@
                                           <div class="col-md-6">
                                           <p><strong>Alamat Kecamatan</strong></p>
                                              <label class="field prepend-icon">
-                                                <input type="text" name="alamat_kecamatan" id="firstname" class="gui-input" placeholder="Alamat Kecamatan" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
+                                                <input type="text" name="alamat_kecamatan" id="firstname" class="gui-input" placeholder="Alamat Kecamatan" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);" required>
                                                 <span class="field-icon">
                                                 <i class="fa fa-home"></i>
                                                 </span>
@@ -176,7 +176,7 @@
                                           
                                        </div><br/><br/>
                                        <label class="field prepend-icon">
-                                       <textarea class="gui-textarea" id="comment" name="alamat_usaha" placeholder="Alamat Usaha" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);"></textarea>
+                                       <textarea class="gui-textarea" id="comment" name="alamat_usaha" placeholder="Alamat Usaha" oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);" required></textarea>
                                        <span class="field-icon">
                                        <i class="fa fa-list"></i>
                                        </span>
@@ -491,7 +491,7 @@
                                                                           </label>
                                                                       </div>
                                                                       <div class=\"col-md-4\">
-                                                                          <p><strong>QTY Produk</strong></p>
+                                                                          <p><strong>Peredaran/Bulan (Karton)</strong></p>
                                                                           <label class=\"field prepend-icon\">
                                                                               <input type=\"text\" name=\"qty[]\" class=\"gui-input\" placeholder=\"QTY\" title=\"jumlah barang\">
                                                                               <span class=\"field-icon\">
