@@ -84,7 +84,7 @@
                                         <div class="col-md-6">
                                             <p><strong>Nama Supplier</strong></p>
                                             <label class="field prepend-icon">
-                                                <input type="text" name="supnama" class="gui-input" placeholder="Nama Supplier" required>
+                                                <input type="text" name="supnama" class="gui-input" placeholder="Nama Supplier" required oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
                                                 <span class="field-icon">
                                                     <i class="fa fa-slack"></i>
                                                 </span>
@@ -126,7 +126,7 @@
                                                 <div class="col-md-12"><br/>
                                                 <p><strong>Alamat Lengkap</strong></p>
                                                     <label class="field prepend-icon">
-                                                    <textarea class="gui-textarea" id="comment" name="alamat" placeholder="Text area"></textarea>
+                                                    <textarea class="gui-textarea" id="comment" name="alamat" placeholder="Text area" required oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);"></textarea>
                                                     <span class="field-icon">
                                                         <i class="fa fa-list"></i>
                                                     </span>
@@ -146,7 +146,7 @@
                                             <br/>
                                         <p><strong>No. NPWP</strong></p>
                                             <label class="field prepend-icon">
-                                                <input type="text" name="npwp" class="gui-input" placeholder="No. NPWP" required>
+                                                <input type="text" name="npwp" id="npwp" class="gui-input npwp" placeholder="No. NPWP" required maxlength="20">
                                                 <span class="field-icon">
                                                 <i class="fa fa-at"></i>
                                                 </span>
