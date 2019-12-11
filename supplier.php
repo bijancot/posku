@@ -132,18 +132,95 @@
                                                     </span>
                                                     </label>
                                                 </div>
-                                            </div><br/>
+                                            </div>
+                                            <br/>
+                                                <h4>PIC</h4>
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                    <p><strong>Nama Lengkap</strong></p>
+                                                        <label class="field prepend-icon">
+                                                            <input type="text" name="picnama" class="gui-input" placeholder="Nama PIC" required oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
+                                                            <span class="field-icon">
+                                                                <i class="fa fa-user"></i>
+                                                            </span>
+                                                        </label><br/><br/>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                    <p><strong>Jabatan PIC</strong></p>
+                                                        <label class="field prepend-icon">
+                                                            <input type="text" name="picjabatan" class="gui-input" placeholder="Jabatan PIC" required oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
+                                                            <span class="field-icon">
+                                                                <i class="fa fa-star"></i>
+                                                            </span>
+                                                        </label><br/><br/>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        
+                                                <p><strong>Alamat Email PIC</strong></p>
+                                                        <label class="field prepend-icon">
+                                                            <input type="text" name="picemail" id="email" class="gui-input" placeholder="Alamat Email PIC" required oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
+                                                            <span class="field-icon">
+                                                            <i class="fa fa-envelope"></i>
+                                                            </span>
+                                                        </label><br/><br/>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                    <p><strong>No. Telp PIC</strong></p>
+                                                        <label class="field prepend-icon">
+                                                            <input type="text" name="picnotelp" class="gui-input" placeholder="Nomor Telpon PIC" required oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
+                                                            <span class="field-icon">
+                                                            <i class="fa fa-phone"></i>
+                                                            </span>
+                                                        </label><br/><br/>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                    <p><strong>No. Handphone PIC</strong></p>
+                                                        <label class="field prepend-icon">
+                                                            <input type="text" name="picnohp" class="gui-input" placeholder="Nomor Handphone PIC" required oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
+                                                            <span class="field-icon">
+                                                            <i class="fa fa-mobile"></i>
+                                                            </span>
+                                                        </label><br/><br/>
+                                                    </div>
+                                                </div>
                                         </div>
-                                        <div class="col-md-1"></div>
-                                        <div class="col-md-5">
+                                        <!-- <div class="col-md-1"></div> -->
+                                        <div class="col-md-6">
                                         <p><strong>No. Telp</strong></p>
                                             <label class="field prepend-icon">
-                                                <input type="text" name="notelp" class="gui-input" placeholder="82334059230" required>
+                                                <input type="text" name="notelp" class="gui-input" placeholder="82334059230" required oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
                                                 <span class="field-icon">
                                                     <strong>+62</strong>
                                                 </span>
                                             </label><br/><br/>
                                             <br/>
+                                            <p><strong>Alamat Email</strong></p>
+                                            <label class="field prepend-icon">
+                                                <input type="text" name="email" id="email" class="gui-input" placeholder="Alamat Email Perusahaan" required oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
+                                                <span class="field-icon">
+                                                <i class="fa fa-envelope"></i>
+                                                </span>
+                                            </label><br/><br/>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                <p><strong>Alamat Website</strong></p>
+                                                    <label class="field prepend-icon">
+                                                    <input type="text" name="website" id="website" class="gui-input" placeholder="Alamat Website" required oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);">
+                                                    <span class="field-icon">
+                                                    <i class="fa fa-globe"></i>
+                                                    </span>
+                                                </label><br/><br/>
+                                                </div>
+                                                <div class="col-md-6">
+                                                <p><strong>FAX</strong></p>
+                                                    <label class="field prepend-icon">
+                                                    <input type="text" name="fax" id="fax" class="gui-input" placeholder="Nomor FAX" required>
+                                                    <span class="field-icon">
+                                                    <i class="fa fa-globe"></i>
+                                                    </span>
+                                                </label><br/><br/>
+                                                </div>
+                                            </div>
                                         <p><strong>No. NPWP</strong></p>
                                             <label class="field prepend-icon">
                                                 <input type="text" name="npwp" id="npwp" class="gui-input npwp" placeholder="No. NPWP" required maxlength="20">
@@ -151,19 +228,19 @@
                                                 <i class="fa fa-at"></i>
                                                 </span>
                                             </label><br/><br/>
-                                            <div class="row">
+                                            <!-- <div class="row">
                                                 <div class="col-md-4">
                                                     <p><strong>BANK</strong></p>
                                                     <label class="field select">
                                                         <select class="form-control select2-single" name="bank" id="area">
                                                             <?php
-                                                        $quer = $db->prepare("SELECT name,code FROM bank");
-                                                        $quer->execute();
-                                                        $hasil = $quer->fetchAll();
-                                                            foreach ($hasil as $key) {
-                                                                echo "<option value=\"".$key['code'];
-                                                                echo "\">".$key['name']."</option>";
-                                                            }
+                                                        // $quer = $db->prepare("SELECT name,code FROM bank");
+                                                        // $quer->execute();
+                                                        // $hasil = $quer->fetchAll();
+                                                        //     foreach ($hasil as $key) {
+                                                        //         echo "<option value=\"".$key['code'];
+                                                        //         echo "\">".$key['name']."</option>";
+                                                        //     }
                                                         ?>
                                                         </select>
                                                     </label>
@@ -177,7 +254,40 @@
                                                 </span>
                                                     </label><br/><br/>
                                                 </div>
-                                            </div><br/><br/><br/>
+                                            </div><br/><br> -->
+                                            <div class="field_wrapper">
+    <div>
+        <!-- <input type="text" name="field_name[]" value=""/> -->
+        <div class="row">
+                                                <div class="col-md-4">
+                                                    <p><strong>BANK</strong></p>
+                                                    <label class="field select">
+                                                        <select class="form-control select2-single" name="bank[]" id="area">
+                                                            <?php
+                                                        $quer = $db->prepare("SELECT name,code FROM bank");
+                                                        $quer->execute();
+                                                        $hasil = $quer->fetchAll();
+                                                            foreach ($hasil as $key) {
+                                                                echo "<option value=\"".$key['code'];
+                                                                echo "\">".$key['name']."</option>";
+                                                            }
+                                                        ?>
+                                                        </select>
+                                                    </label><br/><Br/>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p><strong>No. Rek</strong></p>
+                                                    <label class="field prepend-icon">
+                                                        <input type="text" name="norek[]" class="gui-input" placeholder="No. Rekening" required>
+                                                        <span class="field-icon">
+                                                    <i class="fa fa-dollar"></i>
+                                                </span>
+                                                    </label><br/><br/>
+                                                    <a href="javascript:void(0);" class="add_button btn btn-block btn-warning" title="Add field" style="width:65%">Tambah Field</i></a>
+                                                </div>
+                                            </div><br/><br>
+    </div>
+</div>
                                             <button type="submit" class="btn btn-block btn-success"><strong>Simpan Data</strong></button>
                                         </div>
                                     </div>
